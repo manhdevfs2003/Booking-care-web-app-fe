@@ -1,0 +1,34 @@
+div._loading_overlay_wrapper {
+   position: unset;
+   ._loading_overlay_overlay {
+      z-index: 10000;
+   }
+}
+.manage-patient-container {
+   .m-p-title {
+      font-size: 15px;
+      margin: 10px 0;
+      text-align: center;
+      text-transform: uppercase;
+   }
+
+   .manage-patient-body {
+      padding: 0 20px;
+
+      .table-manage-patient {
+         // Add styles for the table here
+         table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+         }
+
+         td,
+         th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+         }
+      }
+   }
+}
