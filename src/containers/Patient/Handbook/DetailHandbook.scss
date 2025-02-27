@@ -1,0 +1,47 @@
+
+.detail-handbook-container {
+    background-color: #eee;
+    .handbook-banner {
+        img{
+            position: relative;
+
+            max-width: 100%; /* Đảm bảo ảnh không vượt quá khung */
+            height: auto; /* Giữ nguyên tỷ lệ ảnh */
+            display: block; /* Để căn giữa ảnh */
+            margin: 0 auto; 
+            opacity: 0.4;
+        }
+      
+        .text-handbook{
+            span{
+                position: absolute;
+                top:180px;
+                left: 480px;
+                color:white;
+                font-size: 50px;             
+                opacity: 1;
+                z-index: 100;
+                font-family: Georgia, 'Times New Roman', Times, serif   ;
+            }
+        }
+        
+    }
+    .description-handbook {
+       background-color: white !important;
+       padding: 10px;
+       margin: 15px 0;
+       h1,
+       h2,
+       h3 {
+          font-size: 16px;
+          font-weight: 600;
+       }
+    }
+    .detail-handbook-body {
+       margin: 0 100px;
+       display: flex;
+       flex-direction: column;
+    }
+
+ }
+ 

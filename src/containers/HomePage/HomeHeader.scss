@@ -1,10 +1,10 @@
 .home-header-container {
-   height: 60px;
+   height: 80px;
    width: 100%;
    padding: 0 20px;
    position: sticky;
    top: 0;
-   background-color: white;
+   background-color: #EDFFFA;
    z-index: 100;
 
    .home-header-content {
@@ -16,40 +16,46 @@
       .left-content {
          width: 20%;
          display: flex;
-
+         gap: -30px;
          i {
-            font-size: 20px;
+            font-size: 30px;
             color: grey;
             align-items: center;
+            padding-top: 8px;
          }
-
-         .header-logo {
+         .header-logo {      
             background: url("../../assets/logo.png") center center no-repeat;
             cursor: pointer;
             width: 100px;
-            background-size: 30%;
+            background-size: 31%;
+            margin-left: -20px;
+         }
+         .name-web{
+            color: #ff9900;
+            font-weight: 700;
+            font-size: 30px;
          }
       }
 
       .center-content {
          width: 55%;
          display: flex;
-         justify-content: space-between;
          align-items: center;
+         gap: 50px;
 
          .child-content {
-            subs-title {
-               font-weight: 400;
-               font-size: 12px;
-            }
+            font-size: 25px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight:100;
+            opacity: 0.9;
+            cursor: pointer;
          }
       }
 
       .right-content {
          width: 25%;
          display: flex;
-         justify-content: center;
-         align-items: center;
+         justify-content: flex-end;
 
          .support {
             padding-right: 50px;
@@ -65,7 +71,10 @@
 
          .language-vi {
             cursor: pointer;
-            opacity: 0.5;
+            img{
+               height: 25px;
+               width: 25px;
+            }
 
             &.active,
             &:hover {
@@ -77,7 +86,10 @@
          .language-en {
             margin: 0 10px;
             cursor: pointer;
-            opacity: 0.5;
+            img{
+               height: 25px;
+               width: 25px;
+            }
 
             &.active,
             &:hover {
@@ -103,7 +115,7 @@
          rgba(126, 126, 126, 0.25),
          rgba(255, 255, 255, 0.1)
       );
-      padding-top: 15px;
+      padding-top: 60px;
       height: 65%;
 
       .title1 {
@@ -121,15 +133,7 @@
          margin-bottom: 15px;
       }
 
-      .search {
-         width: fit-content;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         margin: 0 auto;
-         padding: 10px;
-         border-radius: 25px;
-         background: #f7d800;
+    
 
          i {
             margin: 0 5px;
@@ -142,7 +146,7 @@
             border: none;
             outline: none;
          }
-      }
+      
    }
 
    .content-down {
@@ -166,16 +170,16 @@
          .option-child {
             .icon-child {
                background: white;
-               width: 40px;
-               height: 40px;
+               width: 100px;
+               height: 100px;
                padding: 10px;
                border-radius: 50%;
                text-align: center;
                margin: 0 auto;
 
                i {
-                  color: #49bce2;
-                  font-size: 20px;
+                  color: #1ecccf;
+                  font-size: 70px;
                }
             }
 

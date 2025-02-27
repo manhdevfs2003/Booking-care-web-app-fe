@@ -1,3 +1,9 @@
+
+
+.scroll-to-top:hover {
+   background-color: #0056b3;
+}
+
 .slick-prev {
    left: -10px !important;
    z-index: 10;
@@ -37,50 +43,62 @@
 .section-share {
    &.section-specialty {
       background-color: #f5f5f5;
+      .bg-image{
+         border-radius: 10px;
+         cursor: pointer;
+      }
+      .specialty-name{
+         cursor: pointer;
+      }
    }
 
    &.section-outstanding-doctor {
       background-color: #f5f5f5;
+      height: 430px;
    }
 
    &.section-about {
+      padding-top: 20px;
       height: 500px !important;
    }
 
+   .section-body:hover *child {
+      text-decoration: underline;
+
+   }
    .section-body {
       .section-customize {
+         .position{
+            cursor: pointer;
+         }
          .bg-image {
             width: 298px;
-            height: 155px;
+            height: 190px;
             background-position: center center;
             background-repeat: no-repeat !important;
             background-size: cover;
             background-color: #eee;
-
-            // &.section-specialty {
-            //     background-image: url('../../assets/specialty/co-xuong-khop.jpg');
-            // }
-
-            &.section-medical-facility {
-            }
+            
+            
+         
 
             &.section-outstanding-doctor {
-               // background-image: url('../../assets/outstanding-doctor/cho.jpg');
-               width: 120px;
-               height: 120px;
-               border-radius: 50%;
+               width: 210px;
+               height: 280px;
+               border-radius: 30%;
+               cursor: pointer;
+              
+              
             }
-
-            &.section-handbook {
-               background-image: url("../../assets/handbook/meo.jpg");
-            }
+         
+           
          }
       }
    }
 }
 
 .section-share {
-   height: 330px;
+   height: 340px;
 
    .section-container {
       margin: 0 100px;
@@ -119,25 +137,31 @@
 
 .section-outstanding-doctor {
    .section-customize {
-      padding: 5px;
+      padding-bottom: 150px;
+      max-width: 90%; /* Đảm bảo chữ không vượt quá chiều ngang của ảnh */
+      text-align: center; /* Căn giữa chữ */
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px 5px;
+      white-space: normal; /* Cho phép xuống dòng */
+      word-wrap: break-word; /* Tự động xuống dòng khi hết chỗ */
+      overflow: visible; /* Hiển thị đầy đủ nội dung */
+      text-align: left; /* Căn chữ về bên trái */
+      padding-left: 5px; /* Thêm khoảng cách nhỏ bên trái */
+      width: 100%; /* Đảm bảo chữ không bị tràn ra ngoài */
 
       .customize-border {
-         border: 1px solid orange;
-         padding: 20px;
-         cursor: pointer;
-
+         margin-top: -20px;
          .outer-bg {
             display: flex;
             justify-content: center;
-            margin-bottom: 10px;
+         }
+         .specialty-doctor{
+            text-align: center;
+            font-weight: 20;
          }
       }
    }
-}
-
-.home-footer {
-   text-align: center;
-   padding-top: 8px;
 }
 
 .section-about {

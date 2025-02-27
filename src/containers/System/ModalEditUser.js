@@ -1,131 +1,98 @@
 import React, { Component } from "react";
-import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { emitter } from "../../utils/emitter";
-import _ from "lodash";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from "reactstrap";
+import { FormattedMessage } from "react-intl";
 
 class ModalEditUser extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            id: '',
-            email: '',
-            password: '',
-            firstName: '',
-            lastName: '',
-            address: '',
-
-        };
-
-    }
-
-    componentDidMount() {
-        let user = this.props.currentUser;
-        if (user && !_.isEmpty(user)) {
-            this.setState({
-                id: user.id,
-                email: user.email,
-                password: 'harcode',
-                firstName: user.firstName,
-                lastName: user.lastName,
-                address: user.address,
-            })
-        }
-    }
-    toggle = () => {
-        this.props.toggleFromParent();
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      firstName: "",
+      lastName: "",
+      address: "",
     };
-    handleOnChangeInput = (event, id) => {
-        let copyState = { ...this.state };
-        copyState[id] = event.target.value;
-        this.setState({
-            ...copyState
-        })
+  }
+
+  componentDidMount() {
+    if (this.props.userData) {
+      this.setState({ ...this.props.userData });
     }
-    checkValideInput = () => {
-        let isValid = true;
-        let arrInput = ['email', 'password', 'firstName', 'lastName', 'address'];
-        for (let i = 0; i < arrInput.length; i++) {
-            if (!this.state[arrInput[i]]) {
-                isValid = false;
-                alert('misig u')
-                break;
+  }
 
-            }
+  toggle = () => {
+    this.props.toggleFromParent();
+  };
 
-        }
-        return isValid;
+  handleOnChangeInput = (event, id) => {
+    this.setState({ [id]: event.target.value });
+  };
 
+  checkValideInput = () => {
+    let arrInput = ["email", "firstName", "lastName", "address"];
+    for (let i = 0; i < arrInput.length; i++) {
+      if (!this.state[arrInput[i]]) {
+        alert("Missing input: " + arrInput[i]);
+        return false;
+      }
     }
-    handleSaveUser = () => {
-        let isValid = this.checkValideInput();
-        if (isValid === true) {
-            this.props.editUser(this.state);
-            console.log('modal data', isValid);
+    return true;
+  };
 
-        }
+  handleSaveUser = () => {
+    if (this.checkValideInput()) {
+      this.props.saveUser(this.state);
     }
-    render() {
-        return (
-            <Modal isOpen={this.props.isOpen} toggle={() => { this.toggle(); }} className={"model-user-container"} size="lg">
-                <ModalHeader toggle={() => { this.toggle() }}>
-                    Edit user
-                </ModalHeader>
-                <ModalBody>
-                    <div className="modal-user-body">
-                        <div className="input-container">
-                            <label>Email</label>
-                            <input type="text" onChange={(event) => { this.handleOnChangeInput(event, "email") }} value={this.state.email} disabled></input>
-                        </div>
-                        <div className="input-container">
-                            <label>password</label>
-                            <input type="password" onChange={(event) => { this.handleOnChangeInput(event, "password") }} value={this.state.password} disabled></input>
-                        </div>
-                        <div className="input-container">
-                            <label>First Name</label>
-                            <input type="text" onChange={(event) => { this.handleOnChangeInput(event, "firstName") }} value={this.state.firstName}></input>
-                        </div>
-                        <div className="input-container">
-                            <label>Last Name</label>
-                            <input type="text" onChange={(event) => { this.handleOnChangeInput(event, "lastName") }} value={this.state.lastName}></input>
-                        </div>
-                        <div className="input-container">
-                            <label>Address</label>
-                            <input type="text" onChange={(event) => { this.handleOnChangeInput(event, "address") }} value={this.state.address}></input>
-                        </div>
-                    </div>
+  };
 
-                </ModalBody>
-                <ModalFooter>
-                    <Button
-                        color="primary"
-                        onClick={() => {
-                            this.handleSaveUser();
-                        }}
-                    >
-                        Add new
-                    </Button>{" "}
-                    <Button
-                        color="secondary"
-                        onClick={() => {
-                            this.toggle();
-                        }}
-                    >
-                        Close
-                    </Button>
-                </ModalFooter>
-            </Modal>
-        );
-    }
+  render() {
+    return (
+      <Modal isOpen={this.props.isOpen} toggle={this.toggle} size="lg">
+        <ModalHeader toggle={this.toggle}>
+          <FormattedMessage id="manage-user.modal.edit" defaultMessage="Edit user" />
+        </ModalHeader>
+        <ModalBody>
+          <Form>
+            <FormGroup>
+              <Label for="email">
+                <FormattedMessage id="manage-user.email" defaultMessage="Email" />
+              </Label>
+              <Input type="email" id="email" value={this.state.email} disabled />
+            </FormGroup>
+            <FormGroup>
+              <Label for="firstName">
+                <FormattedMessage id="manage-user.first-name" defaultMessage="First Name" />
+              </Label>
+              <Input type="text" id="firstName" value={this.state.firstName} onChange={(e) => this.handleOnChangeInput(e, "firstName")} />
+            </FormGroup>
+            <FormGroup>
+              <Label for="lastName">
+                <FormattedMessage id="manage-user.last-name" defaultMessage="Last Name" />
+              </Label>
+              <Input type="text" id="lastName" value={this.state.lastName} onChange={(e) => this.handleOnChangeInput(e, "lastName")} />
+            </FormGroup>
+            <FormGroup>
+              <Label for="address">
+                <FormattedMessage id="manage-user.address" defaultMessage="Address" />
+              </Label>
+              <Input type="text" id="address" value={this.state.address} onChange={(e) => this.handleOnChangeInput(e, "address")} />
+            </FormGroup>
+          </Form>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={this.handleSaveUser}>
+            <FormattedMessage id="manage-user.edit" defaultMessage="Save changes" />
+          </Button>
+          <Button color="secondary" onClick={this.toggle}>
+            <FormattedMessage id="manage-user.modal.close" defaultMessage="Close" />
+          </Button>
+        </ModalFooter>
+      </Modal>
+    );
+  }
 }
 
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
+const mapStateToProps = (state) => ({});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalEditUser);

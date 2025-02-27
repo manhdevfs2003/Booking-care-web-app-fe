@@ -5,6 +5,12 @@
         .text-address{
             text-transform: uppercase;
             color: #333;
+            .address-clinic{
+                padding-left: 30px;
+                padding-top: 20px;
+                text-transform: lowercase;
+                font-weight: 600;
+            }
         }
         .name-clinic{
             padding: 5px 0;
@@ -17,12 +23,41 @@
         }
 
     }
+    .content-insurance{
+        .title-insurance{
+          span{
+            padding-left: 26px;
+                cursor: pointer;
+                color:cadetblue;
+                font-weight: 600;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+          }
+          
+        }
+        .info-insurance{
+            border: 1px solid #ddd;
+            padding : 5px;
+            background-color: #f8f8f8;
+        }
+        .hide-insurance{
+            span{
+                cursor: pointer;
+                color:cadetblue;
+                font-weight: 600;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+        }
+    }
     .content-down{
         .short-infor{
             .detail{
                 cursor: pointer;
-                color:blue;
-            }
+                color:cadetblue;
+                font-weight: 600;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                padding-left: 10px;
+                }
             .currency{
                 margin: 0 5px;
             }
@@ -39,19 +74,23 @@
                 .right{
                     float: right;
                 }
+                
             }
-            .note{}
         }
         .payment{
             border:1px solid #ddd;
             padding: 5px;
             background-color: #eee;
+            
         }
         .hide-price{
             margin-top: 10px;
+            
             span{
                 cursor: pointer;
-                color:blue;
+                color:cadetblue;
+                font-weight: 600;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
         }
     }

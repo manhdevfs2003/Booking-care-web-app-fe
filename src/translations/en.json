@@ -6,6 +6,7 @@
       "select-room": "Choose hospital clinic",
       "doctor": "Doctor",
       "select-doctor": "Choose a good doctor",
+      "handbook":"Health handbook",
       "fee": "Checkup package",
       "check-health": "General health check",
       "support": "Support",
@@ -40,30 +41,72 @@
          "manage-patient": "Manage's Patient"
       }
    },
-   "manage-user": {
-      "add": "Add new user",
-      "email": "Email",
-      "password": "Password",
-      "first-name": "First Name",
-      "last-name": "Last Name",
-      "phone-number": "Phone Number",
-      "address": "Address",
-      "gender": "Gender",
-      "position": "Position",
-      "role": "Role",
-      "image": "Image",
-      "save": "Save user",
-      "edit": "Edit user"
+  "manage-user": {
+    "add": "Add new user",
+    "email": "Email",
+    "password": "Password",
+    "first-name": "First Name",
+    "last-name": "Last Name",
+    "phone-number": "Phone Number",
+    "address": "Address",
+    "gender": "Gender",
+    "position": "Position",
+    "role": "Role",
+    "image": "Image",
+    "save": "Save user",
+    "edit": "Save changes",
+    "delete": "Delete",
+    "action": "Action",
+    "modal": {
+      "add-title": "Create new user",
+      "edit-title": "Edit user information",
+      "close": "Close",
+      "confirm-edit": "Confirm edit",
+      "confirm-add": "Confirm add",
+      "cancel": "Cancel"
+    }
+   },
+   "manage-clinic":{
+        "title": "Clinic Management",
+         "name": "Clinic Name",
+         "address": "Clinic Address",
+         "image": "Clinic Image",
+         "description": "Clinic Description",
+         "save": "Save"
+      }
+   ,
+   "manage-specialty":{
+      "menu.admin.manage-specialty": "Specialty Management",
+      "name": "Specialty Name",
+      "image": "Specialty Image",
+      "description": "Specialty Description",
+      "save": "Save"
    },
    "homepage": {
+      "popular-specialty": "Popular medical specialties",
+      "outstanding-facility": "Outstanding medical facilities",
       "out-standing-doctor": "Outstanding Doctor",
-      "more-info": "See more"
+      "more-info": "See more",
+      "handbook": "Handbook",
+      "talkabout":"What the media says about BookingCare",
+      "intro":"BookingCare is a leading online medical appointment platform in Vietnam, connecting patients with reputable doctors and healthcare facilities. With a user-friendly interface, BookingCare allows users to easily search for doctors by specialty, schedule appointments, and receive online consultations. Additionally, the website provides professional health articles, helping users gain more knowledge to take care of themselves and their families. BookingCare’s fast, convenient, and transparent services optimize the healthcare experience for everyone."
+
    },
    "manage-schedule": {
       "title": "Manage doctor's examination plan",
       "choose-doctor": "Choose doctor",
       "choose-date": "Choose date",
       "save-infor": "Save information"
+   },
+   "manage-handbook":{
+      "title": "Manage health handbook",
+      "name-handbook":  "Handbook name",
+      "image-handbook": "Image",
+      "content-handbook":  "Content",
+      "save":  "Save ",
+      "see-more":  "See more",
+      "text-handbook": "Your health handbook"
+
    },
    "patient": {
       "detail-doctor": {
@@ -76,8 +119,13 @@
          "text-address": "Address for consultation",
          "price": "Consultation fee : ",
          "detail": "View details",
-         "payment": "The patient can pay by:",
-         "hide-price": "Hide price list"
+         "payment": "The patient can pay by: ",
+         "hide-price": "Hide price list",     
+         "insurance-title":"Type of insurance applied",
+         "content-insurance":"Currently the clinic does not accept state health insurance.",
+         "hide-insurance":"Hide insurance information"
+
+
       },
       "booking-modal": {
          "title": "Booking Information",
@@ -109,6 +157,17 @@
          "note": "Note",
          "specialty": "Choose specialty",
          "clinic": "Choose clinic"
+      },
+      "manage-patient": {
+         "manage-patient": "Manage Patients",
+         "select-date": "Select Appointment Date",
+         "time": "Time",
+         "fullname": "Full Name",
+         "address": "Address",
+         "gender": "Gender",
+         "action": "Action",
+         "confirm": "Confirm",
+         "no-data": "No Data Available"
       }
    }
 }

@@ -6,14 +6,14 @@
       "select-room": "Chọn bệnh viện phòng khám",
       "doctor": "Bác sĩ",
       "select-doctor": "Chọn bác sĩ giỏi",
-      "fee": "Gói khám",
-      "check-health": "Khám sức khỏe tổng quát",
+      "handbook":"Cẩm nang sức khỏe",
+      "handbook-check": "Cẩm nang sức khỏe phổ biến",
       "support": "Hỗ trợ",
       "welcome": "Xin chào ,"
    },
    "banner": {
-      "title1": "NỀN TẢNG Y TẾ",
-      "title2": "CHĂM SÓC SỨC KHỎE TOÀN DIỆN",
+      "title1": "NỀN TẢNG Y TẾ ONLINE",
+      "title2": "ĐẶT LỊCH HẸN TRỰC TUYẾN VỚI CÁC BÁC SĨ HÀNG ĐẦU",
       "child1": "Khám chuyên khoa",
       "child2": "Khám từ xa",
       "child3": "Khám tổng quát",
@@ -53,17 +53,57 @@
       "role": "Vai trò",
       "image": "Hình ảnh",
       "save": "Lưu user",
-      "edit": "Lưu thay đổi"
+      "edit": "Lưu thay đổi",
+      "delete": "Xóa",
+      "action": "Hành động",
+      "modal": {
+        "add-title": "Tạo người dùng mới",
+        "edit-title": "Chỉnh sửa thông tin người dùng",
+        "close": "Đóng",
+        "confirm-edit": "Xác nhận chỉnh sửa",
+        "confirm-add": "Xác nhận thêm mới",
+        "cancel": "Hủy bỏ"
+      }
+    },
+      "manage-clinic":{
+         "title": "Quản lý phòng khám",
+         "name": "Tên phòng khám",
+         "address": "Địa chỉ phòng khám",
+         "image": "Ảnh phòng khám",
+         "description": "Mô tả phòng khám",
+         "save": "Lưu"
+      }
+   ,
+   "manage-specialty":{
+      "menu.admin.manage-specialty": "Quản lý chuyên khoa",
+      "name": "Tên chuyên khoa",
+      "image": "Ảnh chuyên khoa",
+      "description": "Mô tả chuyên khoa",
+      "save": "Lưu"
    },
    "homepage": {
+      "popular-specialty": "Chuyên khoa phổ biến",
+      "outstanding-facility": "Cơ sở y tế nổi bật",
       "out-standing-doctor": "Bác sĩ nổi bật tuần qua",
-      "more-info": "Xem thêm"
+      "more-info": "Xem thêm",
+      "handbook": "Cẩm nang sức khỏe",
+      "talkabout":"Truyền thông nói gì về BookingCare",
+      "intro":"BookingCare là một nền tảng đặt lịch khám bệnh trực tuyến hàng đầu tại Việt Nam, giúp kết nối bệnh nhân với các bác sĩ và cơ sở y tế uy tín. Với giao diện thân thiện, BookingCare cho phép người dùng dễ dàng tìm kiếm bác sĩ theo chuyên khoa, đặt lịch hẹn và nhận tư vấn trực tuyến. Ngoài ra, trang web cung cấp nhiều bài viết chuyên môn về sức khỏe, giúp người dùng có thêm kiến thức để chăm sóc bản thân và gia đình. Dịch vụ nhanh chóng, tiện lợi và minh bạch của BookingCare giúp tối ưu hóa trải nghiệm khám chữa bệnh cho mọi người."
    },
    "manage-schedule": {
       "title": "Quản lí kế hoạch khám bệnh của bác sĩ",
       "choose-doctor": "Chọn bác sĩ",
       "choose-date": "Chọn ngày",
       "save-infor": "Lưu thông tin"
+   },
+   "manage-handbook":{
+      "title": "Quản lí cẩm nang sức khỏe",
+      "name-handbook": "Tên cẩm nang",
+      "image-handbook": "Hình ảnh cẩm nang",
+      "content-handbook": "Nội dung",
+      "save": "Lưu",
+      "see-more": "Xem thêm",
+      "text-handbook": "Cẩm nang sức khỏe của bạn"
    },
    "patient": {
       "detail-doctor": {
@@ -76,8 +116,11 @@
          "text-address": "Địa chỉ khám",
          "price": "Giá khám : ",
          "detail": "Xem chi tiết",
-         "payment": "Người bệnh có thể thanh toán bằng hình thức:",
-         "hide-price": "Ẩn bảng giá"
+         "payment": "Người bệnh có thể thanh toán bằng hình thức: ",
+         "hide-price": "Ẩn bảng giá",
+         "insurance-title":"Loại bảo hiểm áp dụng",
+         "content-insurance":"Hiện tại phòng khám chưa áp dụng bảo hiểm y tế nhà nước ",
+         "hide-insurance":"Ẩn thông tin bảo hiểm"
       },
       "booking-modal": {
          "title": "Thông tin đặt lịch khám bệnh",
@@ -109,6 +152,19 @@
          "note": "Ghi chú",
          "specialty": "Chọn chuyên khoa",
          "clinic": "Chọn phòng khám"
-      }
+      },
+      "manage-patient": {
+         "manage-patient": "Quản lý bệnh nhân khám bệnh",
+         "select-date": "Chọn ngày khám",
+         "time": "Thời gian",
+         "fullname": "Họ và tên",
+         "address": "Địa chỉ",
+         "gender": "Giới tính",
+         "action": "Hành động",
+         "confirm": "Xác nhận",
+         "no-data": "Không có dữ liệu"
+       }
+
+
    }
 }

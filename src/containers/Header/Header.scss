@@ -1,52 +1,12 @@
-@import "../../styles/common.scss";
-
 .header-container {
-    z-index: 99;
-    display: flex;
-    justify-content: space-between;
-    background-color: $colormain;
-    color: $common-text-color;
-    height: 40px;
-    position: relative;
-
-    .btn-logout {
-        color: $common-text-color;
-        line-height: 40px;
-        height: 40px;
-        padding: 0 10px;
-
-        &:hover {
-            background-color: darken($colormain, 5);
-        }
-
-        i {
-            font-size: $base-size + 1px;
-        }
-    }
-
-    .languages {
-        .welcome {
-            margin-right: 10px;
-        }
-
-        .language-en {
-            margin-right: 15px;
-            margin-left: 10px;
-            cursor: pointer;
-
-            &.active {
-                opacity: 0.8;
-                color: rgb(102, 162, 102);
-            }
-        }
-
-        .language-vi {
-            cursor: pointer;
-
-            &.active {
-                opacity: 0.8;
-                color: orange;
-            }
-        }
-    }
-}
+                                position: relative;
+                                z-index: 10;
+                              }
+                              
+                              .menu-dropdown {
+                                position: absolute;
+                                z-index: 1000; // Đảm bảo dropdown nằm trên các phần tử khác
+                                background-color: white; // Tránh bị trong suốt
+                                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); // Thêm bóng đổ để dễ nhìn hơn
+                              }
+                              

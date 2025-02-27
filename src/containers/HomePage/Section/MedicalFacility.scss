@@ -1,9 +1,23 @@
-.clinic-child {
-   cursor: pointer;
+.section-medical-facility{
+   .bg-image {
+      border-radius: 10px;
+      cursor: pointer;
+   }
    .clinic-name {
       padding: 10px 0;
-      &:hover {
-         color: #007bff;
-      }
+      padding-bottom: 150px;
+      max-width: 90%; /* Đảm bảo chữ không vượt quá chiều ngang của ảnh */
+      text-align: center; /* Căn giữa chữ */
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px 5px;
+      white-space: normal; /* Cho phép xuống dòng */
+      word-wrap: break-word; /* Tự động xuống dòng khi hết chỗ */
+      overflow: visible; /* Hiển thị đầy đủ nội dung */
+      text-align: left; /* Căn chữ về bên trái */
+      padding-left: 5px; /* Thêm khoảng cách nhỏ bên trái */
+      width: 100%; /* Đảm bảo chữ không bị tràn ra ngoài */
+      cursor: pointer;
    }
 }
+ 
