@@ -1,72 +1,120 @@
-<<<<<<< HEAD
-# Booking-care-web-app
-=======
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+@"
 
-## Available Scripts
+# Hệ Thống Đặt Lịch Khám Bệnh
 
-In the project directory, you can run:
+Ứng dụng web để đặt lịch khám và quản lý dịch vụ y tế.
 
-### `npm start`
+## Tính Năng
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Hỗ trợ đa ngôn ngữ (Tiếng Anh/Tiếng Việt)
+- Xác thực và phân quyền người dùng
+- Hệ thống đặt lịch khám với bác sĩ
+- Quản lý chuyên khoa
+- Quản lý phòng khám
+- Hệ thống cẩm nang/blog y tế
+- Xác nhận email cho lịch hẹn
+- Bảng điều khiển quản trị
+- Bảng điều khiển bác sĩ
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Công Nghệ Sử Dụng
 
-### `npm test`
+- **Frontend:** React.js (v19.0.0)
+- **Quản Lý State:** Redux
+- **UI Components:**
+  - React Bootstrap
+  - React Select
+  - React Custom Scrollbars
+  - React Toastify
+  - Font Awesome
+- **Đa Ngôn Ngữ:** React-intl
+- **Xử Lý Ngày/Giờ:** Moment.js
+- **HTTP Client:** Axios
+- **CSS:** SCSS
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Cấu Trúc Dự Án
 
-### `npm run build`
+\`\`\`
+reactjs/
+├── public/
+├── src/
+│ ├── assets/ # Hình ảnh, biểu tượng
+│ ├── components/ # Components tái sử dụng
+│ ├── containers/ # Components trang
+│ │ ├── Auth/ # Trang xác thực
+│ │ ├── Header/ # Component header
+│ │ ├── System/ # Trang hệ thống admin
+│ │ ├── Patient/ # Trang người dùng
+│ │ └── HomePage/ # Components trang chủ
+│ ├── services/ # Dịch vụ API
+│ ├── store/ # Cấu hình Redux store
+│ ├── translations/ # File ngôn ngữ
+│ ├── utils/ # Hàm tiện ích
+│ └── routes/ # Cấu hình route
+\`\`\`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Cài Đặt và Chạy
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+1. Clone repository
+2. Cài đặt dependencies:
+   \`\`\`bash
+   npm install
+   \`\`\`
+3. Tạo file \`.env\` với các biến môi trường cần thiết
+4. Chạy server phát triển:
+   \`\`\`bash
+   npm start
+   \`\`\`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Scripts Có Sẵn
 
-### `npm run eject`
+- \`npm start\` - Chạy ứng dụng trong môi trường phát triển
+- \`npm build\` - Build ứng dụng cho production
+- \`npm test\` - Chạy bộ test
+- \`npm eject\` - Eject từ create-react-app
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Biến Môi Trường
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Tạo file \`.env\` trong thư mục gốc với các biến sau:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+\`\`\`env
+REACT_APP_BACKEND_URL=your_backend_url
+REACT_APP_IS_LOCALHOST=true
+REACT_APP_FACEBOOK_APP_ID=your_facebook_app_id
+\`\`\`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Chi Tiết Tính Năng
 
-## Learn More
+### Hệ Thống Đặt Lịch
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Tích hợp lịch cho đặt lịch hẹn
+- Kiểm tra tình trạng còn trống theo thời gian thực
+- Hệ thống xác nhận email
+- Lịch sử đặt lịch
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Quản Lý Bác Sĩ
 
-### Code Splitting
+- Quản lý hồ sơ
+- Quản lý lịch làm việc
+- Danh sách lịch hẹn bệnh nhân
+- Truy cập hồ sơ bệnh án
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Bảng Điều Khiển Admin
 
-### Analyzing the Bundle Size
+- Quản lý người dùng
+- Quản lý bác sĩ
+- Quản lý phòng khám
+- Quản lý chuyên khoa
+- Quản lý cẩm nang
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Đóng Góp
 
-### Making a Progressive Web App
+1. Fork repository
+2. Tạo branch tính năng (\`git checkout -b feature/TinhNangMoi\`)
+3. Commit thay đổi (\`git commit -m 'Thêm tính năng mới'\`)
+4. Push lên branch (\`git push origin feature/TinhNangMoi\`)
+5. Tạo Pull Request
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Giấy Phép
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
->>>>>>> d36ab96 (First commit)
+Dự án này được cấp phép theo Giấy phép MIT - xem file LICENSE để biết thêm chi tiết.
+"@ | Out-File -FilePath README.md -Encoding utf8
