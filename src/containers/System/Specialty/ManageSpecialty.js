@@ -7,6 +7,8 @@ import MdEditor from "react-markdown-editor-lite";
 import { CommonUtils } from "../../../utils";
 import { createNewSpecialty } from "../../../services/userService";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
 class ManageSpecialt extends Component {

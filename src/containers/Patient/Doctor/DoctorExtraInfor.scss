@@ -1,18 +1,17 @@
 .doctor-extra-infor-container{
-    padding-left: 15px;
-    .content-up{
-        margin-bottom: 10px;
+    .content-up{     
         .text-address{
             text-transform: uppercase;
             color: #333;
+            font-style: italic;
             .address-clinic{
-                padding-left: 30px;
-                padding-top: 20px;
-                text-transform: lowercase;
                 font-weight: 600;
+                font-style: normal;
+
             }
         }
         .name-clinic{
+
             padding: 5px 0;
             font-weight: 600;
             color: #333;
@@ -20,6 +19,7 @@
         .detail-address{
             font-weight: 600;
             color: #333;
+
         }
 
     }

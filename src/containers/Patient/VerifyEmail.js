@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { FormattedMessage } from "react-intl";
+import { useLocation } from "react-router-dom"; // ✅ Import useLocation
 import { postVerifyBookedAppointment } from "../../services/userService";
 import HomeHeader from "../HomePage/HomeHeader";
 
@@ -10,14 +10,15 @@ class VerifyEmail extends Component {
     this.state = {
       statusVerify: false,
       errCode: null,
-      isConfirmed: false, // Chỉ gửi request khi người dùng nhấn "Yes"
+      isConfirmed: false,
     };
   }
 
   handleConfirm = async (isConfirmed) => {
     if (isConfirmed) {
-      if (this.props.location && this.props.location.search) {
-        let urlParams = new URLSearchParams(this.props.location.search);
+      const { location } = this.props; // ✅ Đảm bảo location tồn tại trước khi truy cập search
+      if (location && location.search) {
+        let urlParams = new URLSearchParams(location.search);
         let token = urlParams.get("token");
         let doctorId = urlParams.get("doctorId");
         let res = await postVerifyBookedAppointment({
@@ -32,10 +33,9 @@ class VerifyEmail extends Component {
         });
       }
     } else {
-      // Người dùng chọn "No", không gửi request
       this.setState({
         statusVerify: true,
-        errCode: null, // Không hiển thị lỗi vì chưa gửi request
+        errCode: null,
         isConfirmed: false,
       });
     }
@@ -67,10 +67,16 @@ class VerifyEmail extends Component {
   }
 }
 
+// ✅ Bọc VerifyEmail bằng một function component để truyền location
+const VerifyEmailWrapper = (props) => {
+  const location = useLocation();
+  return <VerifyEmail {...props} location={location || { search: "" }} />; // 🔹 Tránh lỗi undefined
+};
+
 const mapStateToProps = (state) => {
   return {
     language: state.app.language,
   };
 };
 
-export default connect(mapStateToProps)(VerifyEmail);
+export default connect(mapStateToProps)(VerifyEmailWrapper);

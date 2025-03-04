@@ -51,8 +51,7 @@ class UserRedux extends Component {
 
       this.setState({
         positionArr: arrPositions,
-        position:
-          arrPositions && arrPositions.length > 0 ? arrPositions[0].keyMap : "",
+        position: arrPositions && arrPositions.length > 0 ? arrPositions[0].keyMap : "",
       });
     }
     if (prevProps.roleRedux !== this.props.roleRedux) {
@@ -76,8 +75,7 @@ class UserRedux extends Component {
         phoneNumber: "",
         address: "",
         gender: arrGenders && arrGenders.length > 0 ? arrGenders[0].keyMap : "",
-        position:
-          arrPositions && arrPositions.length > 0 ? arrPositions[0].keyMap : "",
+        position: arrPositions && arrPositions.length > 0 ? arrPositions[0].keyMap : "",
         role: arrRoles && arrRoles.length > 0 ? arrRoles[0].keyMap : "",
         avatar: "",
         action: CRUD_ACTIONS.CREATE,
@@ -138,14 +136,7 @@ class UserRedux extends Component {
   };
   checkValidateInput = () => {
     let isValid = true;
-    let arrCheck = [
-      "email",
-      "password",
-      "firstName",
-      "lastName",
-      "phoneNumber",
-      "address",
-    ];
+    let arrCheck = ["email", "password", "firstName", "lastName", "phoneNumber", "address"];
     for (let i = 0; i < arrCheck.length; i++) {
       if (!this.state[arrCheck[i]]) {
         isValid = false;
@@ -189,121 +180,66 @@ class UserRedux extends Component {
     let roles = this.state.roleArr;
     let language = this.props.language;
     let isGetGenders = this.props.isLoadingGender;
-    let {
-      email,
-      password,
-      firstName,
-      lastName,
-      phoneNumber,
-      address,
-      gender,
-      position,
-      role,
-    } = this.state;
+    let { email, password, firstName, lastName, phoneNumber, address, gender, position, role } = this.state;
 
     return (
       <div className="user-redux-container">
-        <div className="title">User Redux</div>
         <div className="user-redux-body">
           <div className="container">
             <div className="row">
               <div className="col-12 my-3">
                 <FormattedMessage id="manage-user.add" />
               </div>
-              <div className="col-12 ">
-                {isGetGenders === true ? "Loading gender" : ""}
-              </div>
+              <div className="col-12 ">{isGetGenders === true ? "Loading gender" : ""}</div>
 
               <div className="col-3">
                 <label>
                   <FormattedMessage id="manage-user.email" />
                 </label>
-                <input
-                  className="form-control"
-                  type="email"
-                  value={email}
-                  onChange={(event) => this.onChangeInput(event, "email")}
-                  disabled={
-                    this.state.action === CRUD_ACTIONS.EDIT ? true : false
-                  }
-                ></input>
+                <input className="form-control" type="email" value={email} onChange={(event) => this.onChangeInput(event, "email")} disabled={this.state.action === CRUD_ACTIONS.EDIT ? true : false}></input>
               </div>
               <div className="col-3">
                 <label>
                   <FormattedMessage id="manage-user.password" />
                 </label>
-                <input
-                  className="form-control"
-                  type="password"
-                  value={password}
-                  onChange={(event) => this.onChangeInput(event, "password")}
-                  disabled={
-                    this.state.action === CRUD_ACTIONS.EDIT ? true : false
-                  }
-                ></input>
+                <input className="form-control" type="password" value={password} onChange={(event) => this.onChangeInput(event, "password")} disabled={this.state.action === CRUD_ACTIONS.EDIT ? true : false}></input>
               </div>
               <div className="col-3">
                 <label>
                   <FormattedMessage id="manage-user.first-name" />
                 </label>
-                <input
-                  className="form-control"
-                  type="text"
-                  value={firstName}
-                  onChange={(event) => this.onChangeInput(event, "firstName")}
-                ></input>
+                <input className="form-control" type="text" value={firstName} onChange={(event) => this.onChangeInput(event, "firstName")}></input>
               </div>
               <div className="col-3">
                 <label>
                   <FormattedMessage id="manage-user.last-name" />
                 </label>
-                <input
-                  className="form-control"
-                  type="text"
-                  value={lastName}
-                  onChange={(event) => this.onChangeInput(event, "lastName")}
-                ></input>
+                <input className="form-control" type="text" value={lastName} onChange={(event) => this.onChangeInput(event, "lastName")}></input>
               </div>
               <div className="col-3">
                 <label>
                   <FormattedMessage id="manage-user.phone-number" />
                 </label>
-                <input
-                  className="form-control"
-                  type="text"
-                  value={phoneNumber}
-                  onChange={(event) => this.onChangeInput(event, "phoneNumber")}
-                ></input>
+                <input className="form-control" type="text" value={phoneNumber} onChange={(event) => this.onChangeInput(event, "phoneNumber")}></input>
               </div>
               <div className="col-9">
                 <label>
                   <FormattedMessage id="manage-user.address" />
                 </label>
 
-                <input
-                  className="form-control"
-                  type="text"
-                  value={address}
-                  onChange={(event) => this.onChangeInput(event, "address")}
-                ></input>
+                <input className="form-control" type="text" value={address} onChange={(event) => this.onChangeInput(event, "address")}></input>
               </div>
               <div className="col-3">
                 <label>
                   <FormattedMessage id="manage-user.gender" />
                 </label>
-                <select
-                  className="form-control"
-                  value={gender}
-                  onChange={(event) => this.onChangeInput(event, "gender")}
-                >
+                <select className="form-control" value={gender} onChange={(event) => this.onChangeInput(event, "gender")}>
                   {genders &&
                     genders.length > 0 &&
                     genders.map((item, index) => {
                       return (
                         <option key={index} value={item.keyMap}>
-                          {language === LANGUAGES.VI
-                            ? item.valueVi
-                            : item.valueEn}
+                          {language === LANGUAGES.VI ? item.valueVi : item.valueEn}
                         </option>
                       );
                     })}
@@ -313,19 +249,13 @@ class UserRedux extends Component {
                 <label>
                   <FormattedMessage id="manage-user.position" />
                 </label>
-                <select
-                  className="form-control"
-                  value={position}
-                  onChange={(event) => this.onChangeInput(event, "position")}
-                >
+                <select className="form-control" value={position} onChange={(event) => this.onChangeInput(event, "position")}>
                   {positions &&
                     positions.length > 0 &&
                     positions.map((item, index) => {
                       return (
                         <option key={index} value={item.keyMap}>
-                          {language === LANGUAGES.VI
-                            ? item.valueVi
-                            : item.valueEn}
+                          {language === LANGUAGES.VI ? item.valueVi : item.valueEn}
                         </option>
                       );
                     })}
@@ -335,19 +265,13 @@ class UserRedux extends Component {
                 <label>
                   <FormattedMessage id="manage-user.role" />
                 </label>
-                <select
-                  className="form-control"
-                  value={role}
-                  onChange={(event) => this.onChangeInput(event, "role")}
-                >
+                <select className="form-control" value={role} onChange={(event) => this.onChangeInput(event, "role")}>
                   {roles &&
                     roles.length > 0 &&
                     roles.map((item, index) => {
                       return (
                         <option key={index} value={item.keyMap}>
-                          {language === LANGUAGES.VI
-                            ? item.valueVi
-                            : item.valueEn}
+                          {language === LANGUAGES.VI ? item.valueVi : item.valueEn}
                         </option>
                       );
                     })}
@@ -358,12 +282,7 @@ class UserRedux extends Component {
                   <FormattedMessage id="manage-user.image" />
                 </label>
                 <div className="preview-img-container">
-                  <input
-                    id="previewImg"
-                    type="file"
-                    hidden
-                    onChange={(event) => this.handleOnchangeImage(event)}
-                  />
+                  <input id="previewImg" type="file" hidden onChange={(event) => this.handleOnchangeImage(event)} />
                   <label className="label-upload" htmlFor="previewImg">
                     <i className="fas fa-upload"></i>Tải ảnh
                   </label>
@@ -377,36 +296,17 @@ class UserRedux extends Component {
                 </div>
               </div>
               <div className="col-12 my-3">
-                <button
-                  className={
-                    this.state.action === CRUD_ACTIONS.EDIT
-                      ? "btn btn-warning"
-                      : "btn btn-primary"
-                  }
-                  onClick={() => this.handleSaveUser()}
-                >
-                  {this.state.action === CRUD_ACTIONS.EDIT ? (
-                    <FormattedMessage id="manage-user.edit" />
-                  ) : (
-                    <FormattedMessage id="manage-user.save" />
-                  )}
+                <button className={this.state.action === CRUD_ACTIONS.EDIT ? "btn btn-warning" : "btn btn-primary"} onClick={() => this.handleSaveUser()}>
+                  {this.state.action === CRUD_ACTIONS.EDIT ? <FormattedMessage id="manage-user.edit" /> : <FormattedMessage id="manage-user.save" />}
                 </button>
               </div>
               <div className="col-12 mb-5">
-                <TableManageUser
-                  handleEditUserFromParentKey={this.handleEditUserFromParent}
-                  action={this.state.action}
-                />
+                <TableManageUser handleEditUserFromParentKey={this.handleEditUserFromParent} action={this.state.action} />
               </div>
             </div>
           </div>
         </div>
-        {this.state.isOpen === true && (
-          <Lightbox
-            mainSrc={this.state.previewImgURL}
-            onCloseRequest={() => this.setState({ isOpen: false })}
-          />
-        )}
+        {this.state.isOpen === true && <Lightbox mainSrc={this.state.previewImgURL} onCloseRequest={() => this.setState({ isOpen: false })} />}
       </div>
     );
   }

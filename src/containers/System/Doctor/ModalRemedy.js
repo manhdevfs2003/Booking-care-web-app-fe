@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import "./ModalRemedy.scss";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { toast } from "react-toastify";
-import moment from "moment";
 import "moment/locale/vi"; // Import tiếng Việt
 import CommonUtils from "../../../utils/CommonUtils";
 

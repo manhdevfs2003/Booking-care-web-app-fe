@@ -108,7 +108,6 @@ class BookingModal extends Component {
       timeString: timeString,
       doctorName: doctorName,
     });
-    console.log("dateLocal", dateLocal);
     if (res && res.errCode === 0) {
       toast.success("Đặt lịch khám thành công");
       this.props.closeBookingModal();
@@ -143,7 +142,6 @@ class BookingModal extends Component {
     return "";
   };
   render() {
-    // toggle={}
     let { isOpenModal, closeBookingModal, dataTime } = this.props;
     let doctorId = "";
     if (dataTime && !_.isEmpty(dataTime)) {

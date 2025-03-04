@@ -1,13 +1,16 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 
 class Home extends Component {
   render() {
     const { isLoggedIn } = this.props;
-    let linkToRedirect = isLoggedIn ? "/system/user-manage" : "/home";
 
-    return <Redirect to={linkToRedirect} />;
+    // Console log biến isLoggedIn
+    console.log("isLoggedIn:", isLoggedIn);
+    let linkToRedirect = isLoggedIn ? "/system/user-manage=" : "/home";
+
+    return <Navigate to={linkToRedirect} replace />;
   }
 }
 
@@ -17,8 +20,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps)(Home);

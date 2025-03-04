@@ -1,122 +1,83 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { push } from "connected-react-router";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../store/actions";
 import "./Login.scss";
-import { FormattedMessage } from "react-intl";
 import { handleLoginApi } from "../../services/userService";
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      password: "",
-      showPassword: false,
-      errMessage: "",
-    };
-  }
+const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [errMessage, setErrMessage] = useState("");
 
-  handleOnChangeUserName = (e) => {
-    this.setState({
-      username: e.target.value,
-    });
-  };
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const language = useSelector((state) => state.app.language);
 
-  handleOnChangePassword = (e) => {
-    this.setState({
-      password: e.target.value,
-    });
-  };
-
-  handleLogin = async () => {
-    this.setState({
-      errMessage: "",
-    });
+  const handleLogin = async () => {
+    setErrMessage("");
     try {
-      let data = await handleLoginApi(this.state.username, this.state.password);
+      let data = await handleLoginApi(username, password);
       if (data && data.errCode !== 0) {
-        this.setState({
-          errMessage: data.message,
-        });
+        setErrMessage(data.message);
       }
       if (data && data.errCode === 0) {
-        this.props.userLoginSuccess(data.user);
+        dispatch(actions.userLoginSuccess(data.user));
       }
     } catch (e) {
       if (e.response && e.response.data) {
-        this.setState({
-          errMessage: e.response.data.message,
-        });
+        setErrMessage(e.response.data.message);
       }
     }
   };
 
-  handleShowHidePassword = () => {
-    this.setState({
-      showPassword: !this.state.showPassword,
-    });
-  };
-  handleKeyDown = (event) => {
+  const handleKeyDown = (event) => {
     if (event.key === "Enter" || event.keyCode === 13) {
-      this.handleLogin();
+      handleLogin();
     }
   };
-  render() {
-    return (
-      <div className="login-background">
-        <div className="login-container">
-          <div className="login-content row">
-            <div className="col-12 text-center login-title">Login</div>
-            <div className="col-12 form-group">
-              <label>Username: </label>
-              <input type="text" className="form-control login-input" placeholder="Enter your user name" value={this.state.username} onChange={this.handleOnChangeUserName} />
+
+  return (
+    <div className="login-background">
+      <div className="login-container">
+        <div className="login-content row">
+          <div className="col-12 text-center login-title">Login</div>
+          <div className="col-12 form-group">
+            <label>Username: </label>
+            <input type="text" className="form-control login-input" placeholder="Enter your user name" value={username} onChange={(e) => setUsername(e.target.value)} />
+          </div>
+          <div className="col-12 form-group">
+            <label>Password: </label>
+            <div className="login-password">
+              <input type={showPassword ? "text" : "password"} className="form-control login-input" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={handleKeyDown} />
+              <span onClick={() => setShowPassword(!showPassword)}>
+                <i className={showPassword ? "fas fa-eye show-password" : "fas fa-eye-slash show-password"}></i>
+              </span>
             </div>
-            <div className="col-12 form-group">
-              <label>Password: </label>
-              <div className="login-password">
-                <input type={this.state.showPassword ? "text" : "password"} className="form-control login-input" placeholder="Enter your password" value={this.state.password} onChange={this.handleOnChangePassword} onKeyDown={this.handleKeyDown} />
-                <span onClick={this.handleShowHidePassword}>
-                  <i className={this.state.showPassword ? "fas fa-eye show-password" : "fas fa-eye-slash show-password"}></i>
-                </span>
-              </div>
-            </div>
-            <div className="col-12" style={{ color: "red" }}>
-              {this.state.errMessage}
-            </div>
-            <div className="col-12">
-              <button className="btn-login" onClick={this.handleLogin}>
-                Login
-              </button>
-            </div>
-            <div className="col-12">
-              <span className="forgot-password">Forgot your password?</span>
-            </div>
-            <div className="col-12 text-center login-with mt-3">
-              <span className="">Or login with:</span>
-            </div>
-            <div className="col-12 social-login">
-              <i className="fab fa-facebook social-icon fb"></i>
-              <i className="fab fa-google-plus social-icon gg"></i>
-            </div>
+          </div>
+          <div className="col-12" style={{ color: "red" }}>
+            {errMessage}
+          </div>
+          <div className="col-12">
+            <button className="btn-login" onClick={handleLogin}>
+              Login
+            </button>
+          </div>
+          <div className="col-12">
+            <span className="forgot-password">Forgot your password?</span>
+          </div>
+          <div className="col-12 text-center login-with mt-3">
+            <span>Or login with:</span>
+          </div>
+          <div className="col-12 social-login">
+            <i className="fab fa-facebook social-icon fb"></i>
+            <i className="fab fa-google-plus social-icon gg"></i>
           </div>
         </div>
       </div>
-    );
-  }
-}
-
-const mapStateToProps = (state) => {
-  return {
-    language: state.app.language,
-  };
+    </div>
+  );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    navigate: (path) => dispatch(push(path)),
-    userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;

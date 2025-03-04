@@ -7,6 +7,7 @@ import * as actions from "../../../store/actions";
 import { LANGUAGES } from "../../../utils";
 import DatePicker from "../../../components/Input/DatePicker";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import _ from "lodash";
 import { saveBulkScheduleDoctor } from "../../../services/userService";
 class ManageSchedule extends Component {
@@ -132,47 +133,27 @@ class ManageSchedule extends Component {
               <label>
                 <FormattedMessage id="manage-schedule.choose-doctor"></FormattedMessage>
               </label>
-              <Select
-                value={this.state.selectedDoctor}
-                onChange={this.handleChangeSelect}
-                options={this.state.listDoctors}
-              />{" "}
+              <Select value={this.state.selectedDoctor} onChange={this.handleChangeSelect} options={this.state.listDoctors} />{" "}
             </div>
             <div className="col-6 form-group">
               <label>
                 <FormattedMessage id="manage-schedule.choose-date"></FormattedMessage>
               </label>
-              <DatePicker
-                onChange={this.handleOnchangeDatePicker}
-                className="form-control"
-                value={this.state.currentDate}
-                minDate={yesterday}
-              ></DatePicker>
+              <DatePicker onChange={this.handleOnchangeDatePicker} className="form-control" value={this.state.currentDate} minDate={yesterday}></DatePicker>
             </div>
             <div className="col-12 pick-hour-container">
               {rangeTime &&
                 rangeTime.length > 0 &&
                 rangeTime.map((item, index) => {
                   return (
-                    <button
-                      className={
-                        item.isSelected === true
-                          ? "btn btn-schedule active "
-                          : "btn btn-schedule"
-                      }
-                      key={index}
-                      onClick={() => this.handleClickBtnTime(item)}
-                    >
+                    <button className={item.isSelected === true ? "btn btn-schedule active " : "btn btn-schedule"} key={index} onClick={() => this.handleClickBtnTime(item)}>
                       {language === LANGUAGES.VI ? item.valueVi : item.valueEn}
                     </button>
                   );
                 })}
             </div>
             <div className="col-12">
-              <button
-                className="btn btn-primary btn-save-schedule"
-                onClick={() => this.handleSaveSchedule()}
-              >
+              <button className="btn btn-primary btn-save-schedule" onClick={() => this.handleSaveSchedule()}>
                 <FormattedMessage id="manage-schedule.save-infor"></FormattedMessage>
               </button>
             </div>

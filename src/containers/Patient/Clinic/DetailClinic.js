@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
-import { FormattedMessage } from "react-intl";
 import HomeHeader from "../../HomePage/HomeHeader";
 import DoctorSchedule from "../Doctor/DoctorSchedule";
 import "./DetailClinic.scss";
@@ -8,104 +8,67 @@ import DoctorExtraInfor from "../Doctor/DoctorExtraInfor";
 import ProfileDoctor from "../Doctor/ProfileDoctor";
 import { getAllDetailClinicById } from "../../../services/userService";
 import _ from "lodash";
-import { LANGUAGES } from "../../../utils";
 import HomeFooter from "../../HomePage/Section/HomeFooter";
-class DetailClinic extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      arrDoctorId: [],
-      dataDetailClinic: {},
-    };
-  }
-  async componentDidMount() {
-    if (this.props.match && this.props.match.params && this.props.match.params.id) {
-      let id = this.props.match.params.id;
 
-      let res = await getAllDetailClinicById({
-        id: id,
-      });
-      if (res && res.errCode === 0) {
-        let data = res.data;
-        let arrDoctorId = [];
-        if (data && !_.isEmpty(res.data)) {
-          let arr = data.doctorClinic;
-          if (arr && arr.length > 0) {
-            arr.map((item) => {
-              arrDoctorId.push(item.doctorId);
-            });
-          }
+const DetailClinic = ({ language }) => {
+  const { id } = useParams();
+  const [arrDoctorId, setArrDoctorId] = useState([]);
+  const [dataDetailClinic, setDataDetailClinic] = useState({});
+
+  useEffect(() => {
+    const fetchClinicDetails = async () => {
+      if (id) {
+        let res = await getAllDetailClinicById({ id });
+        if (res && res.errCode === 0) {
+          let data = res.data;
+          let doctorIds = data?.doctorClinic?.map((item) => item.doctorId) || [];
+          setDataDetailClinic(data);
+          setArrDoctorId(doctorIds);
         }
-
-        this.setState({
-          dataDetailClinic: res.data,
-          arrDoctorId: arrDoctorId,
-        });
       }
-    }
-  }
-  async componentDidUpdate(prevProps, preState, snapshot) {
-    if (this.props.language !== prevProps.language) {
-    }
-  }
+    };
+    fetchClinicDetails();
+  }, [id]);
 
-  render() {
-    let { arrDoctorId, dataDetailSpecialty, dataDetailClinic } = this.state;
-    console.log("array doctor id: ", arrDoctorId);
-    let { language } = this.props;
-    return (
-      <div className="detail-specialty-container">
-        <HomeHeader isShowBanner={false} />
-        <div className="detail-specialty-body">
-          <div className="description-specialty">
-            {dataDetailClinic && !_.isEmpty(dataDetailClinic) && (
-              <>
-                <div>{dataDetailClinic.namea}</div>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: dataDetailClinic.descriptionHTML,
-                  }}
-                ></div>
-              </>
-            )}
-          </div>
-
-          {arrDoctorId &&
-            arrDoctorId.length > 0 &&
-            arrDoctorId.map((item, index) => {
-              return (
-                <div className="each-doctor" key={index}>
-                  <div className="dt-content-left">
-                    <div className="profile-doctor">
-                      <ProfileDoctor doctorId={item} isShowDescriptionDoctor={true} isShowLinkDetail={true} isShowPrice={true}></ProfileDoctor>
-                    </div>
-                  </div>
-                  <div className="dt-content-right">
-                    <div className="doctor-schedule">
-                      <DoctorSchedule doctorIdFromParent={item}></DoctorSchedule>
-                    </div>
-                    <div className="doctor-extra-infor">
-                      <DoctorExtraInfor doctorIdFromParent={item}></DoctorExtraInfor>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+  return (
+    <div className="detail-clinic-container">
+      <HomeHeader isShowBanner={false} />
+      <div className="detail-clinic-body">
+        <div className="description-clinic">
+          {!_.isEmpty(dataDetailClinic) && (
+            <>
+              <div>{dataDetailClinic.name}</div>
+              <div dangerouslySetInnerHTML={{ __html: dataDetailClinic.descriptionHTML }}></div>
+            </>
+          )}
         </div>
-        <HomeFooter></HomeFooter>
+
+        {arrDoctorId.length > 0 &&
+          arrDoctorId.map((doctorId, index) => (
+            <div className="each-doctor" key={index}>
+              <div className="dt-content-left">
+                <div className="profile-doctor">
+                  <ProfileDoctor doctorId={doctorId} isShowDescriptionDoctor={true} isShowLinkDetail={true} isShowPrice={true} />
+                </div>
+              </div>
+              <div className="dt-content-right">
+                <div className="doctor-schedule">
+                  <DoctorSchedule doctorIdFromParent={doctorId} />
+                </div>
+                <div className="doctor-extra-infor">
+                  <DoctorExtraInfor doctorIdFromParent={doctorId} />
+                </div>
+              </div>
+            </div>
+          ))}
       </div>
-    );
-  }
-}
-
-const mapStateToProps = (state) => {
-  return {
-    language: state.app.language,
-  };
+      <HomeFooter />
+    </div>
+  );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
+const mapStateToProps = (state) => ({
+  language: state.app.language,
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailClinic);
+export default connect(mapStateToProps)(DetailClinic);

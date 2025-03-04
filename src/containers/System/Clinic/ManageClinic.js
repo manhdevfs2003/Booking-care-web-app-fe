@@ -7,7 +7,8 @@ import MdEditor from "react-markdown-editor-lite";
 import { CommonUtils } from "../../../utils";
 import { createNewClinic } from "../../../services/userService";
 import { toast } from "react-toastify";
-import { add } from "lodash";
+import "react-toastify/dist/ReactToastify.css";
+
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
 class ManageClinic extends Component {

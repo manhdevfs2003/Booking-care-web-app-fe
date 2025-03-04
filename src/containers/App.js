@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Route, Switch } from "react-router-dom";
-import { ConnectedRouter as Router } from "connected-react-router";
-import { history } from "../redux";
+import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { userIsAuthenticated, userIsNotAuthenticated } from "../hoc/authentication";
+import { ProtectedRoute, GuestRoute } from "../hoc/authentication"; // Import mới
 import { path } from "../utils";
 import Home from "../routes/Home";
 import Login from "./Auth/Login";
@@ -17,64 +15,59 @@ import VerifyEmail from "./Patient/VerifyEmail.js";
 import DetailSpecialty from "./Patient/Specialty/DetailSpecialty.js";
 import DetailClinic from "./Patient/Clinic/DetailClinic.js";
 import DetailHandbook from "./Patient/Handbook/DetailHandbook.js";
+
 class App extends Component {
-  handlePersistorState = () => {
-    const { persistor } = this.props;
-    let { bootstrapped } = persistor.getState();
-    if (bootstrapped) {
-      if (this.props.onBeforeLift) {
-        Promise.resolve(this.props.onBeforeLift())
-          .then(() => this.setState({ bootstrapped: true }))
-          .catch(() => this.setState({ bootstrapped: true }));
-      } else {
-        this.setState({ bootstrapped: true });
-      }
-    }
-  };
-
-  componentDidMount() {
-    this.handlePersistorState();
-  }
-
   render() {
     return (
       <Fragment>
-        <Router history={history}>
-          <div className="main-container">
-            <div className="content-container">
-              <CustomScrollbars style={{ height: "100vh", width: "100%" }}>
-                <Switch>
-                  <Route path={path.HOME} exact component={Home} />
-                  <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
-                  <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
-                  <Route path={"/doctor/"} component={userIsAuthenticated(Doctor)} />
-                  <Route path={path.HOMEPAGE} component={HomePage} />
-                  <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
-                  <Route path={path.DETAIL_SPECIALTY} component={DetailSpecialty} />
-                  <Route path={path.DETAIL_CLINIC} component={DetailClinic} />
-                  <Route path={path.DETAIL_HANDBOOK} component={DetailHandbook} />
-                  <Route path={path.VERIFY_EMAIL_BOOKING} component={VerifyEmail} />
-                </Switch>
-              </CustomScrollbars>
-            </div>
-
-            <ToastContainer position="bottom-right" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="dark" />
+        <div className="main-container">
+          <div className="content-container">
+            <CustomScrollbars style={{ height: "100vh", width: "100%" }}>
+              <Routes>
+                <Route path={path.HOME} element={<Home />} />
+                <Route
+                  path={path.LOGIN}
+                  element={
+                    <GuestRoute>
+                      <Login />
+                    </GuestRoute>
+                  }
+                />
+                <Route
+                  path={path.SYSTEM}
+                  element={
+                    <ProtectedRoute>
+                      <System />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path={path.DOCTOR}
+                  element={
+                    <ProtectedRoute>
+                      <Doctor />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path={path.HOMEPAGE} element={<HomePage />} />
+                <Route path={path.DETAIL_DOCTOR} element={<DetailDoctor />} />
+                <Route path={path.DETAIL_SPECIALTY} element={<DetailSpecialty />} />
+                <Route path={path.DETAIL_CLINIC} element={<DetailClinic />} />
+                <Route path={path.DETAIL_HANDBOOK} element={<DetailHandbook />} />
+                <Route path={path.VERIFY_EMAIL_BOOKING} element={<VerifyEmail />} />
+              </Routes>
+            </CustomScrollbars>
           </div>
-        </Router>
+          <ToastContainer position="bottom-right" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="dark" />
+        </div>
       </Fragment>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    started: state.app.started,
-    isLoggedIn: state.user.isLoggedIn,
-  };
-};
+const mapStateToProps = (state) => ({
+  started: state.app.started,
+  isLoggedIn: state.user.isLoggedIn,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
