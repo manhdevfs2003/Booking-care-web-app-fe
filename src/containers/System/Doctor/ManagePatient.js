@@ -9,7 +9,6 @@ import { LANGUAGES } from "../../../utils";
 import ModalRemedy from "./ModalRemedy";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import LoadingOverlay from "react-loading-overlay";
 
 class ManagePatient extends Component {
@@ -56,7 +55,6 @@ class ManagePatient extends Component {
     );
   };
   handleBtnConfirm = (item) => {
-    console.log("item", item);
     let data = {
       doctorId: item.doctorId,
       patientId: item.patientID,
@@ -122,7 +120,6 @@ class ManagePatient extends Component {
   render() {
     let { dataPatient, isOpenRemedyModal, dataModal } = this.state;
     let { language } = this.props;
-    console.log("Doctor Component Rendered");
 
     return (
       <>

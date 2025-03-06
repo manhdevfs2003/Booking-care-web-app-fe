@@ -42,21 +42,21 @@ class ManageSchedule extends Component {
     }
   }
   handleDataInputSelect = (inputData) => {
-    let result = [];
     let { language } = this.props;
     if (inputData && inputData.length > 0) {
-      inputData.map((item, index) => {
-        let object = {};
+      return inputData.map((item) => {
         let labelVi = `${item.lastName} ${item.firstName}`;
         let labelEn = `${item.firstName} ${item.lastName}`;
 
-        object.label = language === LANGUAGES.VI ? labelVi : labelEn;
-        object.value = item.id;
-        result.push(object);
+        return {
+          label: language === LANGUAGES.VI ? labelVi : labelEn,
+          value: item.id,
+        };
       });
     }
-    return result;
+    return [];
   };
+
   handleChangeSelect = async (selectedOption) => {
     this.setState({ selectedDoctor: selectedOption });
   };
@@ -94,18 +94,17 @@ class ManageSchedule extends Component {
     if (rangeTime && rangeTime.length > 0) {
       let selectedTime = rangeTime.filter((item) => item.isSelected === true);
       if (selectedTime && selectedTime.length > 0) {
-        selectedTime.map((schedule, index) => {
-          let object = {};
-          object.doctorId = selectedDoctor.value;
-          object.date = formatedDate;
-          object.timeType = schedule.keyMap;
-          result.push(object);
-        });
+        result = selectedTime.map((schedule) => ({
+          doctorId: selectedDoctor.value,
+          date: formatedDate,
+          timeType: schedule.keyMap,
+        }));
       } else {
         toast.error("Invalid selected time");
         return;
       }
     }
+
     let res = await saveBulkScheduleDoctor({
       arrSchedule: result,
       doctorId: selectedDoctor.value,
@@ -121,7 +120,6 @@ class ManageSchedule extends Component {
     let { rangeTime } = this.state;
     let { language } = this.props;
     let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
-    console.log(rangeTime);
     return (
       <div className="manage-schedule-container">
         <div className="m-s-title">

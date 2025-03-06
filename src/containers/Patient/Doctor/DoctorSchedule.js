@@ -21,10 +21,7 @@ class DoctorSchedule extends Component {
     let allDays = this.getArrDays(language);
 
     if (this.props.doctorIdFromParent) {
-      let res = await getScheduleDoctorByDate(
-        this.props.doctorIdFromParent,
-        allDays[0].value
-      );
+      let res = await getScheduleDoctorByDate(this.props.doctorIdFromParent, allDays[0].value);
       this.setState({
         allAvailableTime: res.data ? res.data : [],
       });
@@ -48,9 +45,7 @@ class DoctorSchedule extends Component {
           let today = `Hôm nay -${ddMM}`;
           object.label = today;
         } else {
-          let labelVi = moment(new Date())
-            .add(i, "days")
-            .format("dddd - DD/MM");
+          let labelVi = moment(new Date()).add(i, "days").format("dddd - DD/MM");
           object.label = this.capitalizeFirstLetter(labelVi);
         }
       } else {
@@ -59,10 +54,7 @@ class DoctorSchedule extends Component {
           let today = `Today -${ddMM}`;
           object.label = today;
         } else {
-          object.label = moment(new Date())
-            .add(i, "days")
-            .locale("en")
-            .format("ddd -DD/MM");
+          object.label = moment(new Date()).add(i, "days").locale("en").format("ddd -DD/MM");
         }
       }
 
@@ -80,10 +72,7 @@ class DoctorSchedule extends Component {
     }
     if (this.props.doctorIdFromParent !== prevProps.doctorIdFromParent) {
       let allDays = this.getArrDays(this.props.language);
-      let res = await getScheduleDoctorByDate(
-        this.props.doctorIdFromParent,
-        allDays[0].value
-      );
+      let res = await getScheduleDoctorByDate(this.props.doctorIdFromParent, allDays[0].value);
       this.setState({
         allAvailableTime: res.data ? res.data : [],
       });
@@ -114,12 +103,7 @@ class DoctorSchedule extends Component {
     });
   };
   render() {
-    let {
-      allDays,
-      allAvailableTime,
-      isOpenModalBooking,
-      dataScheduleTimeModal,
-    } = this.state;
+    let { allDays, allAvailableTime, isOpenModalBooking, dataScheduleTimeModal } = this.state;
     let { language } = this.props;
     return (
       <>
@@ -150,18 +134,9 @@ class DoctorSchedule extends Component {
                 <>
                   <div className="time-content-btns">
                     {allAvailableTime.map((item, index) => {
-                      let timeDisplay =
-                        language === LANGUAGES.VI
-                          ? item.timeTypeData.valueVi
-                          : item.timeTypeData.valueEn;
+                      let timeDisplay = language === LANGUAGES.VI ? item.timeTypeData.valueVi : item.timeTypeData.valueEn;
                       return (
-                        <button
-                          key={index}
-                          className={
-                            language === LANGUAGES.VI ? "btn-vie" : "btn-en"
-                          }
-                          onClick={() => this.handleClickScheduleTime(item)}
-                        >
+                        <button key={index} className={language === LANGUAGES.VI ? "btn-vie" : "btn-en"} onClick={() => this.handleClickScheduleTime(item)}>
                           {timeDisplay}
                         </button>
                       );
@@ -170,9 +145,7 @@ class DoctorSchedule extends Component {
 
                   <div className="book-free">
                     <span>
-                      <FormattedMessage id="patient.detail-doctor.choose"></FormattedMessage>{" "}
-                      <i className="far fa-hand-point-up"></i>{" "}
-                      <FormattedMessage id="patient.detail-doctor.book-free"></FormattedMessage>
+                      <FormattedMessage id="patient.detail-doctor.choose"></FormattedMessage> <i className="far fa-hand-point-up"></i> <FormattedMessage id="patient.detail-doctor.book-free"></FormattedMessage>
                     </span>
                   </div>
                 </>
@@ -184,11 +157,7 @@ class DoctorSchedule extends Component {
             </div>
           </div>
         </div>
-        <BookingModal
-          isOpenModal={isOpenModalBooking}
-          closeBookingModal={this.closeBookingModal}
-          dataTime={dataScheduleTimeModal}
-        ></BookingModal>
+        <BookingModal isOpenModal={isOpenModalBooking} closeBookingModal={this.closeBookingModal} dataTime={dataScheduleTimeModal}></BookingModal>
       </>
     );
   }
