@@ -18,8 +18,7 @@ export const adminMenu = [
 
       {
         //quản lí kế hoạch khám bệnh
-
-        name: "menu.admin.manage-schedule",
+        name: "menu.doctor.manage-schedule",
         link: "/system/manage-schedule",
       },
     ],
