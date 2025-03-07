@@ -57,7 +57,6 @@ export const adminMenu = [
 ];
 export const doctorMenu = [
   {
-    name: "menu.admin.manage-user",
     menus: [
       {
         //quản lí bệnh nhân khám bệnh
