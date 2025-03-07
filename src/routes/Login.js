@@ -42,12 +42,6 @@ class Login extends Component {
     this.setState({ password: e.target.value });
   };
 
-  redirectToSystemPage = () => {
-    const { navigate } = this.props;
-    const redirectPath = "/system/user-manage";
-    navigate(`${redirectPath}`);
-  };
-
   processLogin = () => {
     const { username, password } = this.state;
 
