@@ -1,31 +1,28 @@
 .handbook-child {
-    cursor: pointer;
-    width: 100%; /* Đảm bảo phần tử con chiếm toàn bộ không gian */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .section-handbook {
-      width: 100%; /* Hình ảnh chiếm toàn bộ chiều rộng của phần tử cha */
-      height: 200px; /* Chiều cao tùy chỉnh */
-      background-size: cover;
-      background-position: center;
-      border-radius: 10px; /* Bo góc nếu muốn */
-    }
-    
-    .handbook-name {
-      max-width: 90%; /* Đảm bảo chữ không vượt quá chiều ngang của ảnh */
-      text-align: center; /* Căn giữa chữ */
-      font-size: 16px;
-      font-weight: bold;
-      padding: 10px 5px;
-      white-space: normal; /* Cho phép xuống dòng */
-      word-wrap: break-word; /* Tự động xuống dòng khi hết chỗ */
-      overflow: visible; /* Hiển thị đầy đủ nội dung */
-      text-align: left; /* Căn chữ về bên trái */
-      padding-left: 5px; /* Thêm khoảng cách nhỏ bên trái */
-      width: 100%; /* Đảm bảo chữ không bị tràn ra ngoài */
-    }
-    
- }
- 
- 
+  cursor: pointer;
+  width: 100%; /* Đảm bảo phần tử con chiếm toàn bộ không gian */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .section-handbook {
+    width: 100%; /* Hình ảnh chiếm toàn bộ chiều rộng của phần tử cha */
+    height: 200px; /* Chiều cao tùy chỉnh */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px; /* Bo góc nếu muốn */
+  }
+
+  .handbook-name {
+    max-width: 90%; /* Đảm bảo chữ không vượt quá chiều ngang của ảnh */
+    text-align: center; /* Căn giữa chữ */
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 5px;
+    white-space: normal; /* Cho phép xuống dòng */
+    word-wrap: break-word; /* Tự động xuống dòng khi hết chỗ */
+    overflow: visible; /* Hiển thị đầy đủ nội dung */
+    text-align: left; /* Căn chữ về bên trái */
+    padding-left: 5px; /* Thêm khoảng cách nhỏ bên trái */
+    width: 100%;
+  }
+}

@@ -40,9 +40,4 @@ const appReducer = (state = initialState, action) => {
   }
 };
 
-const mapStateToProps = (state) => ({
-  language: state.app.language, // Đảm bảo rằng bạn đang truy cập đúng state
-  // Các state khác...
-});
-
 export default appReducer;

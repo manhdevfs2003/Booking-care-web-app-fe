@@ -5,7 +5,7 @@ import "./ProfileDoctor.scss";
 import { getProFileDoctorById } from "../../../services/userService";
 import { LANGUAGES } from "../../../utils";
 import NumberFormat from "react-number-format";
-import _, { times } from "lodash";
+import _ from "lodash";
 import moment from "moment";
 import "moment/locale/vi"; // Import tiếng Việt
 import { Link } from "react-router-dom";
@@ -27,7 +27,7 @@ class ProfileDoctor extends Component {
     let result = {};
     if (id) {
       let res = await getProFileDoctorById(id);
-      if (res && res.errCode == 0) {
+      if (res && res.errCode === 0) {
         result = res.data;
       }
     }

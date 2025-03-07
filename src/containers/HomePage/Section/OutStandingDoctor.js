@@ -33,7 +33,7 @@ const OutStandingDoctor = (props) => {
           <span className="title-section">
             <FormattedMessage id="homepage.out-standing-doctor" />
           </span>
-          <button className="btn-section">
+          <button className="btn-section" onClick={() => navigate("/doctor/seemore")}>
             <FormattedMessage id="homepage.more-info" />
           </button>
         </div>
@@ -41,7 +41,7 @@ const OutStandingDoctor = (props) => {
           <Slider {...props.settings}>
             {arrDoctors?.length > 0 &&
               arrDoctors.map((item, index) => {
-                let imageBase64 = item.image ? new Buffer(item.image, "base64").toString("binary") : "";
+                let imageBase64 = item.image ? new Buffer.from(item.image, "base64").toString("binary") : "";
                 let nameVi = `${item.positionData?.valueVi}, ${item.lastName} ${item.firstName}`;
                 let nameEn = `${item.positionData?.valueEn}, ${item.firstName} ${item.lastName}`;
                 return (

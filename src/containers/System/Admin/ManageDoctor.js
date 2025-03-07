@@ -40,71 +40,40 @@ class ManageDoctor extends Component {
       specialtyId: "",
     };
   }
-  componentDidMount() {
-    this.props.fetchAllDoctors();
-    this.props.getAllRequiredDoctorInfor();
+  async componentDidMount() {
+    await this.props.fetchAllDoctors();
+    await this.props.getAllRequiredDoctorInfor();
   }
   buildDataInputSelect = (inputData, type) => {
-    let result = [];
     let { language } = this.props;
-    if (inputData && inputData.length > 0) {
+    if (!inputData || inputData.length === 0) return [];
+
+    return inputData.map((item) => {
+      let object = {};
       if (type === "USERS") {
-        inputData.map((item, index) => {
-          let object = {};
-          let labelVi = `${item.lastName} ${item.firstName}`;
-          let labelEn = `${item.firstName} ${item.lastName}`;
-
-          object.label = language === LANGUAGES.VI ? labelVi : labelEn;
-          object.value = item.id;
-          result.push(object);
-        });
+        let labelVi = `${item.lastName} ${item.firstName}`;
+        let labelEn = `${item.firstName} ${item.lastName}`;
+        object.label = language === LANGUAGES.VI ? labelVi : labelEn;
+        object.value = item.id;
+      } else if (type === "PRICE") {
+        let labelVi = `${item.valueVi}`;
+        let labelEn = `${item.valueEn} USD`;
+        object.label = language === LANGUAGES.VI ? labelVi : labelEn;
+        object.value = item.keyMap;
+      } else if (["PAYMENT", "PROVINCE"].includes(type)) {
+        object.label = language === LANGUAGES.VI ? item.valueVi : item.valueEn;
+        object.value = item.keyMap;
+      } else if (["SPECIALTY", "CLINIC"].includes(type)) {
+        object.label = item.name;
+        object.value = item.id;
       }
-      if (type === "PRICE") {
-        inputData.map((item, index) => {
-          let object = {};
-          let labelVi = `${item.valueVi}`;
-          let labelEn = `${item.valueEn} USD`;
-
-          object.label = language === LANGUAGES.VI ? labelVi : labelEn;
-          object.value = item.keyMap;
-          result.push(object);
-        });
-      }
-      if (type === "PAYMENT" || type === "PROVINCE") {
-        inputData.map((item, index) => {
-          let object = {};
-          let labelVi = `${item.valueVi}`;
-          let labelEn = `${item.valueEn}`;
-
-          object.label = language === LANGUAGES.VI ? labelVi : labelEn;
-          object.value = item.keyMap;
-          result.push(object);
-        });
-      }
-      if (type === "SPECIALTY") {
-        inputData.map((item, index) => {
-          let object = {};
-
-          object.label = item.name;
-          object.value = item.id;
-          result.push(object);
-        });
-      }
-      if (type === "CLINIC") {
-        inputData.map((item, index) => {
-          let object = {};
-
-          object.label = item.name;
-          object.value = item.id;
-          result.push(object);
-        });
-      }
-    }
-    return result;
+      return object;
+    });
   };
-  componentDidUpdate(preProps, prevState, snapshot) {
+
+  async componentDidUpdate(preProps, prevState, snapshot) {
     if (preProps.allDoctors !== this.props.allDoctors) {
-      let dataSelect = this.buildDataInputSelect(this.props.allDoctors, "USERS");
+      let dataSelect = await this.buildDataInputSelect(this.props.allDoctors, "USERS");
       this.setState({
         listDoctors: dataSelect,
       });
@@ -154,8 +123,9 @@ class ManageDoctor extends Component {
       contentHTML: this.state.contentHTML,
       contentMarkdown: this.state.contentMarkdown,
       description: this.state.description,
+
       doctorId: this.state.selectedOption.value,
-      action: hasOldData == true ? CRUD_ACTIONS.EDIT : CRUD_ACTIONS.CREATE,
+      action: hasOldData === true ? CRUD_ACTIONS.EDIT : CRUD_ACTIONS.CREATE,
 
       selectedPrice: this.state.selectedPrice.value,
       selectedPayment: this.state.selectedPayment.value,
@@ -170,6 +140,7 @@ class ManageDoctor extends Component {
     this.setState({ selectedOption });
     let { listPayment, listPrice, listProvince, listSpecialty, listClinic } = this.state;
     let res = await getDetailInforDoctor(selectedOption.value);
+
     if (res && res.errCode === 0 && res.data && res.data.Markdown) {
       let markdown = res.data.Markdown;
       let note = "",
@@ -319,7 +290,7 @@ class ManageDoctor extends Component {
           <MdEditor style={{ height: "300px" }} renderHTML={(text) => mdParser.render(text)} value={this.state.contentMarkdown} onChange={this.handleEditorChange} />
         </div>
 
-        <button className={hasOldData == true ? "save-content-doctor" : "create-content-doctor"} onClick={() => this.handleSaveContentMarkdown()}>
+        <button className={hasOldData === true ? "save-content-doctor" : "create-content-doctor"} onClick={() => this.handleSaveContentMarkdown()}>
           {hasOldData === true ? (
             <span>
               <FormattedMessage id="admin.manage-doctor.save"></FormattedMessage>

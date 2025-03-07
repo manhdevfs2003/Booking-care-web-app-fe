@@ -81,6 +81,7 @@ class ManageSpecialt extends Component {
             <label>
               <FormattedMessage id="manage-specialty.image" />
             </label>
+            <br />
             <input type="file" className="form-control-file" onChange={(event) => this.handleOnchangeImage(event)} />
           </div>
           <div className="col-12">

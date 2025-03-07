@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import "./MedicalFacility.scss";
 import Slider from "react-slick";
@@ -9,7 +8,6 @@ import { getAllClinic } from "../../../services/userService";
 const MedicalFacility = (props) => {
   const [dataClinics, setDataClinics] = useState([]);
   const navigate = useNavigate();
-  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
   useEffect(() => {
     const fetchClinics = async () => {
@@ -32,7 +30,7 @@ const MedicalFacility = (props) => {
           <span className="title-section">
             <FormattedMessage id="homepage.outstanding-facility" />
           </span>
-          <button className="btn-section">
+          <button className="btn-section" onClick={() => navigate("/clinic/seemore")}>
             <FormattedMessage id="homepage.more-info" />
           </button>
         </div>

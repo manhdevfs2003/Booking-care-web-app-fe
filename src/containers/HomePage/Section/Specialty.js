@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import Slider from "react-slick";
 import { getAllSpecialty } from "../../../services/userService";
@@ -9,7 +8,6 @@ import "./Specialty.scss";
 const Specialty = (props) => {
   const [dataSpecialty, setDataSpecialty] = useState([]);
   const navigate = useNavigate();
-  const lang = useSelector((state) => state.app.language);
 
   useEffect(() => {
     const fetchSpecialty = async () => {
@@ -32,7 +30,7 @@ const Specialty = (props) => {
           <span className="title-section">
             <FormattedMessage id="homepage.popular-specialty" />
           </span>
-          <button className="btn-section">
+          <button className="btn-section" onClick={() => navigate("/specialty/seemore")}>
             <FormattedMessage id="homepage.more-info" />
           </button>
         </div>

@@ -1,19 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Button, Table, Container, Card } from "react-bootstrap";
 import "./TableManageUser.scss";
 import * as actions from "../../../store/actions";
 import MarkdownIt from "markdown-it";
 import MdEditor from "react-markdown-editor-lite";
-// import style manually
 import "react-markdown-editor-lite/lib/index.css";
 
-// Register plugins if required
-// MdEditor.use(YOUR_PLUGINS_HERE);
+// Khởi tạo Markdown Parser
+const mdParser = new MarkdownIt();
 
-// Initialize a markdown parser
-const mdParser = new MarkdownIt(/* Markdown-it options */);
-
-// Finish!
 function handleEditorChange({ html, text }) {
   console.log("handleEditorChange", html, text);
 }
@@ -25,55 +21,79 @@ class TableManageUser extends Component {
       userRedux: [],
     };
   }
+
   componentDidMount() {
     this.props.fetchUserRedux();
   }
-  componentDidUpdate(preProps, prevState) {
+
+  componentDidUpdate(preProps) {
     if (preProps.listUsers !== this.props.listUsers) {
       this.setState({
         userRedux: this.props.listUsers,
       });
     }
   }
+
   handleDeleteUser = (user) => {
     this.props.deleteANewUserRedux(user.id);
   };
+
   handleEditUser = (user) => {
     this.props.handleEditUserFromParentKey(user);
   };
+
   render() {
     let arrUsers = this.state.userRedux;
     return (
-      <>
-        <table id="TableManageUser">
-          <tbody>
-            <tr>
-              <th>Email</th>
-              <th>First name</th>
-              <th>Last name</th>
-              <th>Address</th>
-              <th>Action</th>
-            </tr>
-            {arrUsers &&
-              arrUsers.length > 0 &&
-              arrUsers.map((item, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{item.email}</td>
-                    <td>{item.firstName}</td>
-                    <td>{item.lastName}</td>
-                    <td>{item.address}</td>
-                    <td>
-                      <button onClick={() => this.handleEditUser(item)}>Edit</button>
-                      <button onClick={() => this.handleDeleteUser(item)}>Delete</button>
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
-        <MdEditor style={{ height: "500px" }} renderHTML={(text) => mdParser.render(text)} onChange={handleEditorChange} />
-      </>
+      <Container>
+        <Card className="mt-4">
+          <Card.Header>
+            <h3 className="text-center">Manage Users</h3>
+          </Card.Header>
+          <Card.Body>
+            <Table striped bordered hover responsive>
+              <thead className="table-dark">
+                <tr>
+                  <th>Email</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Address</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {arrUsers &&
+                  arrUsers.length > 0 &&
+                  arrUsers.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.email}</td>
+                      <td>{item.firstName}</td>
+                      <td>{item.lastName}</td>
+                      <td>{item.address}</td>
+                      <td>
+                        <Button variant="primary" size="sm" className="me-2" onClick={() => this.handleEditUser(item)}>
+                          Edit
+                        </Button>
+                        <Button variant="danger" size="sm" onClick={() => this.handleDeleteUser(item)}>
+                          Delete
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </Table>
+          </Card.Body>
+        </Card>
+
+        <Card className="mt-4">
+          <Card.Header>
+            <h4>Markdown Editor</h4>
+          </Card.Header>
+          <Card.Body>
+            <MdEditor style={{ height: "500px" }} renderHTML={(text) => mdParser.render(text)} onChange={handleEditorChange} />
+          </Card.Body>
+        </Card>
+      </Container>
     );
   }
 }

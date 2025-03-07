@@ -25,6 +25,7 @@ class DoctorSchedule extends Component {
       this.setState({
         allAvailableTime: res.data ? res.data : [],
       });
+      console.log("res", res);
     }
     if (allDays && allDays.length > 0) {
       this.setState({
@@ -89,6 +90,7 @@ class DoctorSchedule extends Component {
           allAvailableTime: res.data ? res.data : [],
         });
       }
+      console.log("res1", res);
     }
   };
   handleClickScheduleTime = (time) => {

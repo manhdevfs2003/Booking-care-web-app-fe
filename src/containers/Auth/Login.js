@@ -1,19 +1,16 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as actions from "../../store/actions";
 import "./Login.scss";
 import { handleLoginApi } from "../../services/userService";
-
+import "@fortawesome/fontawesome-free/css/all.min.css";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [errMessage, setErrMessage] = useState("");
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const language = useSelector((state) => state.app.language);
 
   const handleLogin = async () => {
     setErrMessage("");
@@ -71,8 +68,8 @@ const Login = () => {
             <span>Or login with:</span>
           </div>
           <div className="col-12 social-login">
-            <i className="fab fa-facebook social-icon fb"></i>
-            <i className="fab fa-google-plus social-icon gg"></i>
+            <i className="fab fa-google social-icon gg"></i>
+            <i className="fab fa-facebook-f social-icon fb"></i>
           </div>
         </div>
       </div>

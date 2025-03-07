@@ -70,7 +70,7 @@
         "title": "Clinic Management",
          "name": "Clinic Name",
          "address": "Clinic Address",
-         "image": "Clinic Image",
+         "image": "Clinic Image: ",
          "description": "Clinic Description",
          "save": "Save"
       }
@@ -78,7 +78,7 @@
    "manage-specialty":{
       "menu.admin.manage-specialty": "Specialty Management",
       "name": "Specialty Name",
-      "image": "Specialty Image",
+      "image": "Specialty Image: ",
       "description": "Specialty Description",
       "save": "Save"
    },

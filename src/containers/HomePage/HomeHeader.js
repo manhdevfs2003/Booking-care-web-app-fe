@@ -28,7 +28,9 @@ const HomeHeader = (props) => {
           <div className="left-content">
             <i className="fa fa-bars"></i>
             <div className="header-logo" onClick={returnToHome}></div>
-            <div className="name-web">HealthCare</div>
+            <div className="name-web" onClick={returnToHome}>
+              HealthCare
+            </div>
           </div>
           <div className="center-content">
             <div className="child-content">

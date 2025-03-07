@@ -10,7 +10,6 @@ import HomeFooter from "./Section/HomeFooter";
 import "./HomePage.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import CustomScrollbars from "../../components/CustomScrollbars";
 class HomePage extends Component {
   render() {
     let settings = {
@@ -20,13 +19,14 @@ class HomePage extends Component {
       slidesToShow: 4,
       slidesToScroll: 1,
     };
+
     return (
       <>
         <HomeHeader isShowBanner={true} />
-        <Specialty settings={settings} />
-        <MedicalFacility settings={settings} />
-        <OutStandingDoctor settings={settings} />
-        <HandBook settings={settings} />
+        <Specialty id="section-specialty" settings={settings} />
+        <MedicalFacility id="section-facility" settings={settings} />
+        <OutStandingDoctor id="section-outstandingdoctor" settings={settings} />
+        <HandBook id="section-handbook" settings={settings} />
         <About></About>
         <HomeFooter></HomeFooter>
       </>

@@ -82,6 +82,7 @@ class ManageHandbook extends Component {
               {" "}
               <FormattedMessage id="manage-handbook.image-handbook" />
             </label>
+            <br />
             <input type="file" className="form-control-file" onChange={(event) => this.handleOnchangeImage(event)} />
           </div>
           <div className="col-12">

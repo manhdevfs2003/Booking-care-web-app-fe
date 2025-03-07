@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import "./HandBook.scss";
 import Slider from "react-slick";
@@ -9,7 +8,6 @@ import { getAllHandbook } from "../../../services/userService";
 const HandBook = (props) => {
   const [dataHandbook, setDataHandbook] = useState([]);
   const navigate = useNavigate();
-  const lang = useSelector((state) => state.app.language);
 
   useEffect(() => {
     const fetchHandbook = async () => {
@@ -32,7 +30,7 @@ const HandBook = (props) => {
           <span className="title-section">
             <FormattedMessage id="homepage.handbook" />
           </span>
-          <button className="btn-section">
+          <button className="btn-section" onClick={() => navigate("/handbook/seemore")}>
             <FormattedMessage id="homepage.more-info" />
           </button>
         </div>

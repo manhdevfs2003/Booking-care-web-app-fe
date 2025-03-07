@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
@@ -48,82 +48,60 @@ const SubMenu = ({ name, link, onLinkClick }) => {
   );
 };
 
-class Navigator extends Component {
-  state = { expandedMenu: {} };
+const Navigator = ({ menus, onLinkClick }) => {
+  const location = useLocation();
+  const [expandedMenu, setExpandedMenu] = useState({});
 
-  toggle = (groupIndex, menuIndex) => {
-    this.setState((prevState) => ({
-      expandedMenu: {
-        ...prevState.expandedMenu,
-        [`${groupIndex}_${menuIndex}`]: !prevState.expandedMenu[`${groupIndex}_${menuIndex}`],
-      },
+  const toggle = (groupIndex, menuIndex) => {
+    setExpandedMenu((prevExpanded) => ({
+      ...prevExpanded,
+      [`${groupIndex}_${menuIndex}`]: !prevExpanded[`${groupIndex}_${menuIndex}`],
     }));
   };
 
-  isMenuHasSubMenuActive = (location, subMenus, link) => {
+  const isMenuHasSubMenuActive = (subMenus, link) => {
     if (subMenus?.some((subMenu) => subMenu.link === location.pathname)) {
       return true;
     }
     return link && location.pathname === link;
   };
 
-  checkActiveMenu = () => {
-    const { menus } = this.props;
-    const location = window.location;
-
-    for (let i = 0; i < menus.length; i++) {
-      const group = menus[i];
-      if (group.menus) {
-        for (let j = 0; j < group.menus.length; j++) {
-          const menu = group.menus[j];
-          if (menu.subMenus?.length > 0 && this.isMenuHasSubMenuActive(location, menu.subMenus, null)) {
-            this.setState({ expandedMenu: { [`${i}_${j}`]: true } });
-            return;
-          }
+  useEffect(() => {
+    const updatedExpandedMenu = {};
+    menus.forEach((group, groupIndex) => {
+      group.menus?.forEach((menu, menuIndex) => {
+        if (menu.subMenus?.length > 0 && isMenuHasSubMenuActive(menu.subMenus, null)) {
+          updatedExpandedMenu[`${groupIndex}_${menuIndex}`] = true;
         }
-      }
-    }
-  };
+      });
+    });
+    setExpandedMenu(updatedExpandedMenu);
+  }, [location.pathname, menus]);
 
-  componentDidMount() {
-    this.checkActiveMenu();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.location !== prevProps.location) {
-      this.checkActiveMenu();
-    }
-  }
-
-  render() {
-    const { menus, onLinkClick } = this.props;
-    const location = window.location;
-
-    return (
-      <Fragment>
-        <ul className="navigator-menu list-unstyled">
-          {menus.map((group, groupIndex) => (
-            <Fragment key={groupIndex}>
-              <MenuGroup name={group.name}>
-                {group.menus?.map((menu, menuIndex) => {
-                  const isActive = this.isMenuHasSubMenuActive(location, menu.subMenus, menu.link);
-                  const isSubMenuOpen = this.state.expandedMenu[`${groupIndex}_${menuIndex}`];
-                  return (
-                    <Menu key={menuIndex} active={isActive} name={menu.name} link={menu.link} hasSubMenu={menu.subMenus} onClick={() => this.toggle(groupIndex, menuIndex)} onLinkClick={onLinkClick}>
-                      {menu.subMenus?.map((subMenu, subMenuIndex) => (
-                        <SubMenu key={subMenuIndex} name={subMenu.name} link={subMenu.link} onLinkClick={onLinkClick} />
-                      ))}
-                    </Menu>
-                  );
-                })}
-              </MenuGroup>
-            </Fragment>
-          ))}
-        </ul>
-      </Fragment>
-    );
-  }
-}
+  return (
+    <Fragment>
+      <ul className="navigator-menu list-unstyled">
+        {menus.map((group, groupIndex) => (
+          <Fragment key={groupIndex}>
+            <MenuGroup name={group.name}>
+              {group.menus?.map((menu, menuIndex) => {
+                const isActive = isMenuHasSubMenuActive(menu.subMenus, menu.link);
+                const isSubMenuOpen = expandedMenu[`${groupIndex}_${menuIndex}`];
+                return (
+                  <Menu key={menuIndex} active={isActive} name={menu.name} link={menu.link} hasSubMenu={menu.subMenus} onClick={() => toggle(groupIndex, menuIndex)} onLinkClick={onLinkClick}>
+                    {menu.subMenus?.map((subMenu, subMenuIndex) => (
+                      <SubMenu key={subMenuIndex} name={subMenu.name} link={subMenu.link} onLinkClick={onLinkClick} />
+                    ))}
+                  </Menu>
+                );
+              })}
+            </MenuGroup>
+          </Fragment>
+        ))}
+      </ul>
+    </Fragment>
+  );
+};
 
 const mapStateToProps = (state) => ({});
 const mapDispatchToProps = (dispatch) => ({});

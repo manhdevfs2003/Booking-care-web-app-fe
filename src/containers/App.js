@@ -15,7 +15,7 @@ import VerifyEmail from "./Patient/VerifyEmail.js";
 import DetailSpecialty from "./Patient/Specialty/DetailSpecialty.js";
 import DetailClinic from "./Patient/Clinic/DetailClinic.js";
 import DetailHandbook from "./Patient/Handbook/DetailHandbook.js";
-
+import Seemore from "./Patient/Seemore.js";
 class App extends Component {
   render() {
     return (
@@ -50,6 +50,7 @@ class App extends Component {
                   }
                 />
                 <Route path={path.HOMEPAGE} element={<HomePage />} />
+                <Route path="/:section/seemore" element={<Seemore />} />
                 <Route path={path.DETAIL_DOCTOR} element={<DetailDoctor />} />
                 <Route path={path.DETAIL_SPECIALTY} element={<DetailSpecialty />} />
                 <Route path={path.DETAIL_CLINIC} element={<DetailClinic />} />

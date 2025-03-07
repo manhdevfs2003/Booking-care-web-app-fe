@@ -83,6 +83,7 @@ class ManageClinic extends Component {
             <label>
               <FormattedMessage id="manage-clinic.image" />
             </label>
+            <br />
             <input type="file" className="form-control-file" onChange={(event) => this.handleOnchangeImage(event)} />
           </div>
           <div className="col-6 form-group">
