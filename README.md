@@ -1,120 +1,186 @@
 @"
 
-# Hệ Thống Đặt Lịch Khám Bệnh
+# 🏥 HealthCare Booking - Frontend
 
-Ứng dụng web để đặt lịch khám và quản lý dịch vụ y tế.
+[![Live Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://www.healthcarebooking.
 
-## Tính Năng
+> **Ứng dụng đặt lịch khám bệnh trực tuyến** - Kết nối bệnh nhân với các bác sĩ chuyên khoa hàng đầu
 
-- Hỗ trợ đa ngôn ngữ (Tiếng Anh/Tiếng Việt)
-- Xác thực và phân quyền người dùng
-- Hệ thống đặt lịch khám với bác sĩ
-- Quản lý chuyên khoa
-- Quản lý phòng khám
-- Hệ thống cẩm nang/blog y tế
-- Xác nhận email cho lịch hẹn
-- Bảng điều khiển quản trị
-- Bảng điều khiển bác sĩ
+### 🏠 Trang chủ
 
-## Công Nghệ Sử Dụng
+- **Header responsive** với sidebar navigation
+- **Multi-language support** (Tiếng Việt / English)
+- **Banner search** cho tìm kiếm nhanh
+- **Section carousel** hiển thị chuyên khoa, cơ sở y tế, bác sĩ nổi bật
 
-- **Frontend:** React.js (v19.0.0)
-- **Quản Lý State:** Redux
-- **UI Components:**
-  - React Bootstrap
-  - React Select
-  - React Custom Scrollbars
-  - React Toastify
-  - Font Awesome
-- **Đa Ngôn Ngữ:** React-intl
-- **Xử Lý Ngày/Giờ:** Moment.js
-- **HTTP Client:** Axios
-- **CSS:** SCSS
+### 👨‍⚕️ Quản lý Bác sĩ
 
-## Cấu Trúc Dự Án
+- **Profile chi tiết** với thông tin chuyên môn
+- **Lịch khám** và slot time có sẵn
+- **Đánh giá** và feedback từ bệnh nhân
+- **Chuyên khoa** và cơ sở y tế liên kết
+
+### 🏥 Hệ thống Đặt lịch
+
+- **Booking calendar** với UI/UX trực quan
+- **Payment integration** (Stripe/PayPal)
+- **Email confirmation** tự động
+- **Notification system** real-time
+
+## 🛠️ Công nghệ sử dụng
+
+### Frontend Framework
+
+- **React 18.x** - UI Library
+- **Redux Toolkit** - State Management
+- **React Router v6** - Navigation
+- **React Hooks** - Modern React patterns
+
+### Styling & UI
+
+- **SCSS/Sass** - CSS Preprocessor
+- **Bootstrap 5** - CSS Framework
+- **FontAwesome** - Icon library
+- **React-Slick** - Carousel component
+
+### Development Tools
+
+- **Webpack** - Module bundler
+- **Babel** - JavaScript compiler
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+
+### APIs & Services
+
+- **Axios** - HTTP client
+- **React-Intl** - Internationalization
+- **Moment.js** - Date handling
+- **Lodash** - Utility functions
+
+## 🚀 Cài đặt
+
+### Yêu cầu hệ thống
+
+- **Node.js** >= 16.x
+- **npm** >= 8.x hoặc **yarn** >= 1.22.x
+- **Git** để clone repository
+
+### Bước 1: Clone repository
+
+\`\`\`bash
+git clone https://github.com/manh0912hehe/Booking-care-web-app.git
+cd Booking-care-web-app/reactjs
+\`\`\`
+
+### Bước 2: Cài đặt dependencies
+
+\`\`\`bash
+
+# Sử dụng npm
+
+npm install
+
+# Hoặc sử dụng yarn
+
+yarn install
+\`\`\`
+
+### Bước 3: Cấu hình environment
+
+\`\`\`bash
+
+# Copy file environment mẫu
+
+cp .env.example .env
+
+# Chỉnh sửa file .env theo hướng dẫn bên dưới
+
+\`\`\`
+
+### Bước 4: Khởi chạy development server
+
+\`\`\`bash
+
+# Development mode
+
+npm start
+
+# Hoặc
+
+yarn start
+\`\`\`
+
+Ứng dụng sẽ chạy tại: \`http://localhost:3000\`
+
+## ⚙️ Cấu hình
+
+### Environment Variables
+
+Tạo file \`.env\` trong thư mục root với các biến sau:
+
+\`\`\`bash
+
+# Server Configuration
+
+PORT=3000
+NODE_ENV=development
+
+# Backend API
+
+REACT_APP_BACKEND_URL=http://localhost:8080
+REACT_APP_IS_LOCALHOST=1
+
+# Router Configuration
+
+REACT_APP_ROUTER_BASE_NAME=
+
+### Tính năng Responsive:
+
+- **CSS Grid & Flexbox** layout
+- **Text truncation** với ellipsis
+- **Touch-friendly** buttons và controls
+- **Optimized images** với lazy loading
+
+## 🎥 Video Demo
+
+## 📂 Cấu trúc dự án
 
 \`\`\`
 reactjs/
-├── public/
+├── public/ # Static assets
+│ ├── index.html # HTML template
+│ ├── favicon.ico # Favicon
+│ └── manifest.json # PWA manifest
 ├── src/
-│ ├── assets/ # Hình ảnh, biểu tượng
-│ ├── components/ # Components tái sử dụng
-│ ├── containers/ # Components trang
-│ │ ├── Auth/ # Trang xác thực
-│ │ ├── Header/ # Component header
-│ │ ├── System/ # Trang hệ thống admin
-│ │ ├── Patient/ # Trang người dùng
-│ │ └── HomePage/ # Components trang chủ
-│ ├── services/ # Dịch vụ API
-│ ├── store/ # Cấu hình Redux store
-│ ├── translations/ # File ngôn ngữ
-│ ├── utils/ # Hàm tiện ích
-│ └── routes/ # Cấu hình route
+│ ├── components/ # Reusable components
+│ │ ├── ConfirmModal/ # Modal components
+│ │ └── SideNavigation/ # Sidebar menu
+│ ├── containers/ # Page containers
+│ │ ├── App.js # Main app component
+│ │ ├── HomePage/ # Homepage sections
+│ │ ├── Header/ # Admin header
+│ │ └── System/ # Admin system
+│ ├── hoc/ # Higher-order components
+│ ├── routes/ # Route configurations
+│ ├── services/ # API services
+│ ├── store/ # Redux store
+│ │ ├── actions/ # Action creators
+│ │ ├── reducers/ # Reducers
+│ │ └── index.js # Store configuration
+│ ├── styles/ # Global styles
+│ │ ├── styles.scss # Main style file
+│ │ ├── \_responsive.scss # Responsive utilities
+│ │ ├── \_component-fixes.scss # Component fixes
+│ │ └── \_utilities.scss # Utility classes
+│ ├── translations/ # i18n translations
+│ │ ├── vi.json # Vietnamese
+│ │ └── en.json # English
+│ ├── utils/ # Utility functions
+│ ├── axios.js # API client config
+│ ├── config.js # App configuration
+│ └── index.js # App entry point
+├── .env.example # Environment template
+├── .gitignore # Git ignore rules
+├── package.json # Dependencies
+└── README.md # Documentation
 \`\`\`
-
-## Cài Đặt và Chạy
-
-1. Clone repository
-2. Cài đặt dependencies:
-   \`\`\`bash
-   npm install
-   \`\`\`
-3. Tạo file \`.env\` với các biến môi trường cần thiết
-4. Chạy server phát triển:
-   \`\`\`bash
-   npm start
-   \`\`\`
-
-## Scripts Có Sẵn
-
-- \`npm start\` - Chạy ứng dụng trong môi trường phát triển
-- \`npm build\` - Build ứng dụng cho production
-- \`npm test\` - Chạy bộ test
-- \`npm eject\` - Eject từ create-react-app
-
-## Biến Môi Trường
-
-Tạo file \`.env\` trong thư mục gốc với các biến sau:
-
-\`\`\`env
-REACT_APP_BACKEND_URL=your_backend_url
-REACT_APP_IS_LOCALHOST=true
-REACT_APP_FACEBOOK_APP_ID=your_facebook_app_id
-\`\`\`
-
-## Chi Tiết Tính Năng
-
-### Hệ Thống Đặt Lịch
-
-- Tích hợp lịch cho đặt lịch hẹn
-- Kiểm tra tình trạng còn trống theo thời gian thực
-- Hệ thống xác nhận email
-- Lịch sử đặt lịch
-
-### Quản Lý Bác Sĩ
-
-- Quản lý hồ sơ
-- Quản lý lịch làm việc
-- Danh sách lịch hẹn bệnh nhân
-- Truy cập hồ sơ bệnh án
-
-### Bảng Điều Khiển Admin
-
-- Quản lý người dùng
-- Quản lý bác sĩ
-- Quản lý phòng khám
-- Quản lý chuyên khoa
-- Quản lý cẩm nang
-
-## Đóng Góp
-
-1. Fork repository
-2. Tạo branch tính năng (\`git checkout -b feature/TinhNangMoi\`)
-3. Commit thay đổi (\`git commit -m 'Thêm tính năng mới'\`)
-4. Push lên branch (\`git push origin feature/TinhNangMoi\`)
-5. Tạo Pull Request
-
-## Giấy Phép
-
-Dự án này được cấp phép theo Giấy phép MIT - xem file LICENSE để biết thêm chi tiết.
-"@ | Out-File -FilePath README.md -Encoding utf8
