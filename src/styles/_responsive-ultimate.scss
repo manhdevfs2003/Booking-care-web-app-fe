@@ -1,0 +1,430 @@
+/*
+ * RESPONSIVE FIX - ULTIMATE SOLUTION
+ * Giải pháp cuối cùng cho vấn đề responsive
+ */
+
+/* ===========================================
+   PREVENT TEXT OVERFLOW BETWEEN SECTIONS
+   =========================================== */
+
+/* Strict container boundaries */
+.section-share {
+  width: 100% !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  
+  .section-container {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 15px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  
+  .section-body {
+    width: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* ===========================================
+   SLICK CAROUSEL STRICT BOUNDARIES
+   =========================================== */
+
+.slick-slider {
+  width: 100% !important;
+  overflow: hidden !important;
+  
+  .slick-list {
+    width: 100% !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+  }
+  
+  .slick-track {
+    display: flex !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  .slick-slide {
+    padding: 0 8px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    min-height: 300px !important;
+    
+    > div {
+      width: 100% !important;
+      height: 100% !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+    }
+  }
+}
+
+/* ===========================================
+   CARD LAYOUT WITH STRICT BOUNDARIES
+   =========================================== */
+
+.section-customize {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 10px 5px !important;
+  box-sizing: border-box !important;
+  min-height: 280px !important;
+  max-height: 320px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  
+  .bg-image {
+    width: 100% !important;
+    max-width: 250px !important;
+    height: 160px !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    border-radius: 10px !important;
+    margin: 0 auto 10px auto !important;
+    flex-shrink: 0 !important;
+    
+    &.section-outstanding-doctor {
+      width: 150px !important;
+      height: 150px !important;
+      border-radius: 50% !important;
+      margin: 0 auto 15px auto !important;
+    }
+  }
+  
+  /* Text content area with strict boundaries */
+  .text-content {
+    width: 100% !important;
+    max-width: 250px !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    text-align: center !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    padding: 0 5px !important;
+  }
+}
+
+/* ===========================================
+   TEXT CONTENT WITH STRICT TRUNCATION
+   =========================================== */
+
+/* Specialty names - ALWAYS truncated */
+.specialty-name {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 8px 2px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+  text-align: center !important;
+  line-height: 1.3 !important;
+  box-sizing: border-box !important;
+  
+  /* STRICT text truncation - NO overflow */
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  
+  cursor: pointer !important;
+  transition: color 0.3s ease !important;
+  
+  &:hover {
+    color: #45B7D1 !important;
+  }
+}
+
+/* Clinic names - ALWAYS truncated */
+.clinic-name {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 8px 2px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+  text-align: center !important;
+  line-height: 1.3 !important;
+  box-sizing: border-box !important;
+  
+  /* STRICT text truncation - NO overflow */
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  
+  cursor: pointer !important;
+  transition: color 0.3s ease !important;
+  
+  &:hover {
+    color: #96CEB4 !important;
+  }
+}
+
+/* Handbook names - ALWAYS truncated */
+.handbook-name {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 8px 2px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+  text-align: center !important;
+  line-height: 1.3 !important;
+  box-sizing: border-box !important;
+  
+  /* STRICT text truncation - NO overflow */
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  
+  cursor: pointer !important;
+  transition: color 0.3s ease !important;
+  
+  &:hover {
+    color: #FF6B6B !important;
+  }
+}
+
+/* Doctor info - ALWAYS truncated */
+.position {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 2px 0 !important;
+  padding: 5px 2px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #666 !important;
+  text-align: center !important;
+  line-height: 1.2 !important;
+  box-sizing: border-box !important;
+  
+  /* STRICT text truncation - NO overflow */
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.specialty-doctor {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 2px 0 0 0 !important;
+  padding: 3px 2px !important;
+  font-size: 11px !important;
+  color: #999 !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+  
+  /* STRICT text truncation - NO overflow */
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* ===========================================
+   RESPONSIVE BREAKPOINTS - STRICT BOUNDARIES
+   =========================================== */
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .slick-slide {
+    width: 25% !important; /* 4 items */
+    max-width: 25% !important;
+  }
+  
+  .section-customize {
+    .bg-image {
+      max-width: 220px !important;
+      height: 150px !important;
+    }
+  }
+}
+
+/* Desktop */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .slick-slide {
+    width: 33.333% !important; /* 3 items */
+    max-width: 33.333% !important;
+  }
+  
+  .section-customize {
+    .bg-image {
+      max-width: 200px !important;
+      height: 140px !important;
+    }
+    
+    .text-content {
+      max-width: 200px !important;
+    }
+  }
+}
+
+/* Tablet */
+@media (max-width: 991px) and (min-width: 768px) {
+  .slick-slide {
+    width: 50% !important; /* 2 items */
+    max-width: 50% !important;
+  }
+  
+  .section-customize {
+    .bg-image {
+      max-width: 180px !important;
+      height: 120px !important;
+      
+      &.section-outstanding-doctor {
+        width: 120px !important;
+        height: 120px !important;
+      }
+    }
+    
+    .text-content {
+      max-width: 180px !important;
+    }
+  }
+  
+  .specialty-name,
+  .clinic-name,
+  .handbook-name {
+    font-size: 13px !important;
+  }
+  
+  .position {
+    font-size: 11px !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .slick-slide {
+    width: 100% !important; /* 1 item */
+    max-width: 100% !important;
+    padding: 0 15px !important;
+  }
+  
+  .section-customize {
+    min-height: 220px !important;
+    max-height: 250px !important;
+    
+    .bg-image {
+      max-width: 160px !important;
+      height: 100px !important;
+      
+      &.section-outstanding-doctor {
+        width: 100px !important;
+        height: 100px !important;
+      }
+    }
+    
+    .text-content {
+      max-width: 160px !important;
+    }
+  }
+  
+  .specialty-name,
+  .clinic-name,
+  .handbook-name {
+    font-size: 12px !important;
+    padding: 6px 1px !important;
+  }
+  
+  .position {
+    font-size: 10px !important;
+  }
+  
+  .specialty-doctor {
+    font-size: 9px !important;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .section-customize {
+    .bg-image {
+      max-width: 140px !important;
+      height: 90px !important;
+      
+      &.section-outstanding-doctor {
+        width: 90px !important;
+        height: 90px !important;
+      }
+    }
+    
+    .text-content {
+      max-width: 140px !important;
+    }
+  }
+  
+  .specialty-name,
+  .clinic-name,
+  .handbook-name {
+    font-size: 11px !important;
+  }
+}
+
+/* ===========================================
+   ULTIMATE PROTECTION - NO SECTION OVERFLOW
+   =========================================== */
+
+/* Clear any conflicting styles and FORCE boundaries */
+.section-specialty .specialty-name,
+.section-medical-facility .clinic-name,
+.section-handbook .handbook-name {
+  padding-bottom: 10px !important; /* Remove the 150px padding-bottom */
+  text-align: center !important;
+  
+  /* ABSOLUTE protection against overflow */
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  word-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  
+  /* Strict width constraints */
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  
+  /* No floating or positioning that could cause overflow */
+  position: static !important;
+  float: none !important;
+  clear: both !important;
+}
+
+/* Additional protection for all text elements */
+.section-customize * {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+/* Specific protection for each section type */
+.section-share.section-specialty,
+.section-share.section-medical-facility,
+.section-share.section-outstanding-doctor,
+.section-share.section-handbook {
+  isolation: isolate !important;
+  contain: layout style !important;
+  
+  .slick-slide {
+    isolation: isolate !important;
+    contain: layout !important;
+  }
+  
+  .section-customize {
+    isolation: isolate !important;
+    contain: layout !important;
+  }
+}

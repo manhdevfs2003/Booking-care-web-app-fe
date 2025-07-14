@@ -40,7 +40,9 @@ const MedicalFacility = (props) => {
               dataClinics.map((item, index) => (
                 <div key={index} className="section-customize section-medical-facility" onClick={() => handleViewDetailClinic(item)}>
                   <div className="bg-image section-medical-facility" style={{ backgroundImage: `url(${item.image})` }} />
-                  <div className="clinic-name">{item.name}</div>
+                  <div className="text-content">
+                    <div className="clinic-name">{item.name}</div>
+                  </div>
                 </div>
               ))}
           </Slider>

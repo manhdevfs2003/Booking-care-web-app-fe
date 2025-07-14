@@ -11,6 +11,32 @@
       "support": "Hỗ trợ",
       "welcome": "Xin chào ,"
    },
+   "sidenav": {
+      "menu": "Menu chính",
+      "about": "Về chúng tôi",
+      "contact": "Liên hệ"
+   },
+   "footer": {
+      "company": "Công ty Cổ phần BookingCare",
+      "address": "Gò Vấp, TP.HCM",
+      "phone": "024-7301-2468 (7h - 18h)",
+      "email": "bookingcarevnauth@gmail.com",
+      "office": "Văn phòng tại TP Hồ Chí Minh",
+      "office-address": "384 Hoàng Diệu, Quận 4, TP.HCM",
+      "bookingcare": "BookingCare",
+      "contact-cooperation": "Liên hệ hợp tác",
+      "digital-transformation": "Chuyển đổi số",
+      "privacy-policy": "Chính sách bảo mật",
+      "operating-regulations": "Quy chế hoạt động",
+      "recruitment": "Tuyển dụng",
+      "terms-of-use": "Điều khoản sử dụng",
+      "faq": "Câu hỏi thường gặp",
+      "partners": "Đối tác",
+      "payment": "Thanh toán",
+      "language-switcher": "Ngôn ngữ",
+      "vietnamese": "Tiếng Việt",
+      "english": "English"
+   },
    "banner": {
       "title1": "NỀN TẢNG Y TẾ ONLINE",
       "title2": "ĐẶT LỊCH HẸN TRỰC TUYẾN VỚI CÁC BÁC SĨ HÀNG ĐẦU",

@@ -12,6 +12,32 @@
       "support": "Support",
       "welcome": "Welcome ,"
    },
+   "sidenav": {
+      "menu": "Main Menu",
+      "about": "About Us",
+      "contact": "Contact"
+   },
+   "footer": {
+      "company": "BookingCare Joint Stock Company",
+      "address": "Go Vap, Ho Chi Minh City",
+      "phone": "024-7301-2468 (7AM - 6PM)",
+      "email": "bookingcarevnauth@gmail.com",
+      "office": "Office in Ho Chi Minh City",
+      "office-address": "384 Hoang Dieu, District 4, Ho Chi Minh City",
+      "bookingcare": "BookingCare",
+      "contact-cooperation": "Contact for Cooperation",
+      "digital-transformation": "Digital Transformation",
+      "privacy-policy": "Privacy Policy",
+      "operating-regulations": "Operating Regulations",
+      "recruitment": "Recruitment",
+      "terms-of-use": "Terms of Use",
+      "faq": "Frequently Asked Questions",
+      "partners": "Partners",
+      "payment": "Payment",
+      "language-switcher": "Language",
+      "vietnamese": "Tiếng Việt",
+      "english": "English"
+   },
    "banner": {
       "title1": "MEDICAL FOUNDATION",
       "title2": "COMPREHENSIVE HEALTH CARE",

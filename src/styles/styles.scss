@@ -9,3 +9,7 @@ $fa-font-path : "~@fortawesome/fontawesome-free-webfonts/webfonts";
 
 @import "base";
 @import "form";
+@import "responsive"; // 👈 RESPONSIVE STYLES
+@import "component-fixes"; // 👈 COMPONENT FIXES
+@import "utilities"; // 👈 UTILITY CLASSES
+@import "responsive-ultimate"; // 👈 ULTIMATE RESPONSIVE FIX

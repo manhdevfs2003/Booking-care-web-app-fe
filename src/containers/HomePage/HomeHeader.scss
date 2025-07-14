@@ -5,7 +5,8 @@
   position: sticky;
   top: 0;
   background-color: #edfffa;
-  z-index: 100;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
   .home-header-content {
     width: 100%;
@@ -22,6 +23,20 @@
         color: grey;
         align-items: center;
         padding-top: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 8px;
+        border-radius: 8px;
+        
+        &:hover {
+          color: #45B7D1;
+          background-color: rgba(69, 183, 209, 0.1);
+          transform: scale(1.1);
+        }
+        
+        &:active {
+          transform: scale(0.95);
+        }
       }
       .header-logo {
         background: url("../../assets/logo.png") center center no-repeat;

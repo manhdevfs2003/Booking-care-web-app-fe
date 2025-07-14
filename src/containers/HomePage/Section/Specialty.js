@@ -45,7 +45,9 @@ const Specialty = (props) => {
                       backgroundImage: `url(${item.image})`,
                     }}
                   />
-                  <div className="specialty-name">{item.name}</div>
+                  <div className="text-content">
+                    <div className="specialty-name u-text-truncate">{item.name}</div>
+                  </div>
                 </div>
               ))}
           </Slider>

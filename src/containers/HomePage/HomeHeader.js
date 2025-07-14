@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom"; // Thay thế withRouter
 import "./HomeHeader.scss";
@@ -7,9 +7,11 @@ import { LANGUAGES } from "../../utils/constant";
 import { changeLanguageApp } from "../../store/actions";
 import vietnamFlag from "../../assets/vietnam.png";
 import englishFlag from "../../assets/english.png";
+import SideNavigation from "../../components/SideNavigation/SideNavigation";
 
 const HomeHeader = (props) => {
   const navigate = useNavigate(); // Sử dụng useNavigate thay vì withRouter
+  const [isSideNavOpen, setIsSideNavOpen] = useState(false);
 
   const changeLanguage = (language) => {
     props.changeLanguageAppRedux(language);
@@ -19,40 +21,31 @@ const HomeHeader = (props) => {
     navigate("/home"); // Thay thế this.props.history.push
   };
 
+  const toggleSideNav = () => {
+    setIsSideNavOpen(!isSideNavOpen);
+  };
+
+  const closeSideNav = () => {
+    setIsSideNavOpen(false);
+  };
+
   let language = props.lang;
 
   return (
     <React.Fragment>
+      <SideNavigation isOpen={isSideNavOpen} onClose={closeSideNav} />
+      
       <div className="home-header-container">
         <div className="home-header-content">
           <div className="left-content">
-            <i className="fa fa-bars"></i>
+            <i className="fa fa-bars" onClick={toggleSideNav} style={{ cursor: 'pointer' }}></i>
             <div className="header-logo" onClick={returnToHome}></div>
             <div className="name-web" onClick={returnToHome}>
               HealthCare
             </div>
           </div>
           <div className="center-content">
-            <div className="child-content">
-              <b>
-                <FormattedMessage id="homeheader.speciality" />
-              </b>
-            </div>
-            <div className="child-content">
-              <b>
-                <FormattedMessage id="homeheader.health-facility" />
-              </b>
-            </div>
-            <div className="child-content">
-              <b>
-                <FormattedMessage id="homeheader.doctor" />
-              </b>
-            </div>
-            <div className="child-content">
-              <b>
-                <FormattedMessage id="homeheader.handbook" />
-              </b>
-            </div>
+            {/* Navigation items removed - now in sidebar */}
           </div>
           <div className="right-content">
             <div className={language === LANGUAGES.VI ? "language-vi active" : "language-vi"}>

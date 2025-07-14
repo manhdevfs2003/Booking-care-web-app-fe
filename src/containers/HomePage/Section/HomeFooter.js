@@ -1,5 +1,7 @@
 import React from "react";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { FormattedMessage } from "react-intl";
+import { connect } from "react-redux";
+import { Mail, Phone, MapPin, Globe } from "lucide-react";
 import {
   FaGoogle,
   FaMicrosoft,
@@ -10,17 +12,19 @@ import {
   FaPaypal,
   FaMoneyBillWave,
 } from "react-icons/fa";
+import { LANGUAGES } from "../../../utils/constant";
+import { changeLanguageApp } from "../../../store/actions/appActions";
 import "./HomeFooter.scss";
 
-const HomeFooter = () => {
+const HomeFooter = ({ language, changeLanguageAppRedux }) => {
   const menuItems = [
-    { text: "Liên hệ hợp tác", link: "#" },
-    { text: "Chuyển đổi số", link: "#" },
-    { text: "Chính sách bảo mật", link: "#" },
-    { text: "Quy chế hoạt động", link: "#" },
-    { text: "Tuyển dụng", link: "#" },
-    { text: "Điều khoản sử dụng", link: "#" },
-    { text: "Câu hỏi thường gặp", link: "#" },
+    { textKey: "footer.contact-cooperation", link: "#" },
+    { textKey: "footer.digital-transformation", link: "#" },
+    { textKey: "footer.privacy-policy", link: "#" },
+    { textKey: "footer.operating-regulations", link: "#" },
+    { textKey: "footer.recruitment", link: "#" },
+    { textKey: "footer.terms-of-use", link: "#" },
+    { textKey: "footer.faq", link: "#" },
   ];
 
   const partners = [
@@ -46,37 +50,49 @@ const HomeFooter = () => {
     },
   ];
 
+  const handleChangeLanguage = (selectedLanguage) => {
+    changeLanguageAppRedux(selectedLanguage);
+  };
+
   return (
     <footer className="footer-container">
       {/* Thông tin công ty */}
       <div className="footer-column">
-        <h2>Công ty Cổ phần BookingCare</h2>
+        <h2>
+          <FormattedMessage id="footer.company" />
+        </h2>
         <div className="contact-info">
           <p>
-            <MapPin /> Gò Vấp, TP.HCM
+            <MapPin /> <FormattedMessage id="footer.address" />
           </p>
           <p>
-            <Phone /> 024-7301-2468 (7h - 18h)
+            <Phone /> <FormattedMessage id="footer.phone" />
           </p>
           <p>
-            <Mail /> bookingcarevnauth@gmail.com
+            <Mail /> <FormattedMessage id="footer.email" />
           </p>
         </div>
 
         {/* Văn phòng TP.HCM */}
-        <h3>Văn phòng tại TP Hồ Chí Minh</h3>
+        <h3>
+          <FormattedMessage id="footer.office" />
+        </h3>
         <p>
-          <MapPin /> 384 Hoàng Diệu, Quận 4, TP.HCM
+          <MapPin /> <FormattedMessage id="footer.office-address" />
         </p>
       </div>
 
       {/* Danh sách liên kết */}
       <div className="footer-column">
-        <h3>BookingCare</h3>
+        <h3>
+          <FormattedMessage id="footer.bookingcare" />
+        </h3>
         <ul>
           {menuItems.map((item, index) => (
             <li key={index}>
-              <a href={item.link}>{item.text}</a>
+              <a href={item.link}>
+                <FormattedMessage id={item.textKey} />
+              </a>
             </li>
           ))}
         </ul>
@@ -84,7 +100,9 @@ const HomeFooter = () => {
 
       {/* Đối tác */}
       <div className="footer-column">
-        <h3>Đối tác</h3>
+        <h3>
+          <FormattedMessage id="footer.partners" />
+        </h3>
         <ul>
           {partners.map((partner, index) => (
             <li key={index}>
@@ -98,7 +116,9 @@ const HomeFooter = () => {
 
       {/* Thanh toán */}
       <div className="footer-column">
-        <h3>Thanh toán</h3>
+        <h3>
+          <FormattedMessage id="footer.payment" />
+        </h3>
         <p>
           <FaCcMastercard style={{ color: "#EB001B", fontSize: "24px" }} />{" "}
           Mastercard
@@ -114,8 +134,42 @@ const HomeFooter = () => {
           Momo/ZaloPay
         </p>
       </div>
+
+      {/* Language Switcher */}
+      <div className="footer-column language-switcher">
+        <h3>
+          <Globe style={{ marginRight: "8px" }} />
+          <FormattedMessage id="footer.language-switcher" />
+        </h3>
+        <div className="language-options">
+          <button
+            className={`language-btn ${language === LANGUAGES.VI ? 'active' : ''}`}
+            onClick={() => handleChangeLanguage(LANGUAGES.VI)}
+          >
+            <FormattedMessage id="footer.vietnamese" />
+          </button>
+          <button
+            className={`language-btn ${language === LANGUAGES.EN ? 'active' : ''}`}
+            onClick={() => handleChangeLanguage(LANGUAGES.EN)}
+          >
+            <FormattedMessage id="footer.english" />
+          </button>
+        </div>
+      </div>
     </footer>
   );
 };
 
-export default HomeFooter;
+const mapStateToProps = (state) => {
+  return {
+    language: state.app.language,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeLanguageAppRedux: (language) => dispatch(changeLanguageApp(language)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeFooter);

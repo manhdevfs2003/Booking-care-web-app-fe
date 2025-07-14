@@ -1,0 +1,225 @@
+/* 
+ * RESPONSIVE SOLUTION - Thêm vào file src/styles/_responsive.scss
+ * Giải pháp này KHÔNG ảnh hưởng đến code CSS hiện tại
+ */
+
+// Responsive breakpoints
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+$large-desktop: 1200px;
+
+// Base responsive wrapper
+.responsive-app-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  min-height: 100vh;
+}
+
+/* Fix for header overlapping content */
+.home-header-container {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000 !important;
+  background-color: #edfffa !important;
+}
+
+/* Ensure sidebar has higher z-index than header */
+.side-navigation {
+  z-index: 1001 !important;
+}
+
+.side-nav-overlay {
+  z-index: 1000 !important;
+}
+
+/* Add margin to content below header */
+.home-header-container + * {
+  margin-top: 80px !important;
+}
+
+/* Alternative fix for banner specifically */
+.home-header-banner {
+  margin-top: 80px !important;
+}
+
+/* Ensure all content below header has proper spacing */
+.responsive-app-wrapper > div:not(.home-header-container) {
+  margin-top: 80px !important;
+}
+
+// Global responsive rules - Áp dụng cho toàn bộ app
+@media (max-width: #{$large-desktop}) {
+  .responsive-app-wrapper {
+    zoom: 0.95;
+  }
+}
+
+@media (max-width: #{$desktop}) {
+  .responsive-app-wrapper {
+    zoom: 0.9;
+  }
+}
+
+@media (max-width: #{$tablet}) {
+  .responsive-app-wrapper {
+    zoom: 0.8;
+    transform-origin: top left;
+  }
+
+  // Override specific components that need adjustment
+  .home-header-container {
+    .home-header-content {
+      .left-content {
+        width: 25% !important;
+      }
+      .center-content {
+        width: 50% !important;
+        gap: 20px !important;
+
+        .child-content {
+          font-size: 18px !important;
+        }
+      }
+      .right-content {
+        width: 25% !important;
+      }
+    }
+  }
+
+  // Section adjustments
+  .section-share {
+    .section-container {
+      margin: 0 20px !important;
+    }
+  }
+
+  .section-about {
+    padding: 0 20px !important;
+
+    .section-about-content {
+      flex-direction: column !important;
+
+      .content-left,
+      .content-right {
+        width: 100% !important;
+      }
+    }
+  }
+}
+
+@media (max-width: #{$mobile}) {
+  .responsive-app-wrapper {
+    zoom: 0.7;
+  }
+
+  // Mobile specific overrides
+  .home-header-container {
+    height: 60px !important;
+
+    .home-header-content {
+      .left-content {
+        width: 30% !important;
+
+        .header-logo {
+          width: 60px !important;
+        }
+
+        .name-web {
+          font-size: 20px !important;
+        }
+      }
+
+      .center-content {
+        width: 40% !important;
+        gap: 10px !important;
+
+        .child-content {
+          font-size: 14px !important;
+        }
+      }
+
+      .right-content {
+        width: 30% !important;
+
+        .support {
+          padding-right: 10px !important;
+        }
+      }
+    }
+  }
+
+  // Slick carousel mobile fixes
+  .slick-prev,
+  .slick-next {
+    height: 32px !important;
+    width: 30px !important;
+  }
+
+  // Section mobile adjustments
+  .section-share {
+    height: auto !important;
+    min-height: 250px !important;
+
+    .section-container {
+      margin: 0 10px !important;
+
+      .section-header {
+        .title-section {
+          font-size: 18px !important;
+        }
+
+        .btn-section {
+          padding: 8px 12px !important;
+          font-size: 12px !important;
+        }
+      }
+    }
+
+    .section-body {
+      .section-customize {
+        .bg-image {
+          width: 250px !important;
+          height: 150px !important;
+
+          &.section-outstanding-doctor {
+            width: 150px !important;
+            height: 200px !important;
+          }
+        }
+      }
+    }
+  }
+
+  .section-outstanding-doctor {
+    .section-customize {
+      .customize-border {
+        .specialty-doctor {
+          font-size: 14px !important;
+        }
+      }
+    }
+  }
+}
+
+// Input focus fix for iOS zoom
+@media (max-width: #{$tablet}) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  textarea,
+  select {
+    font-size: 16px !important; // Prevents zoom on iOS
+  }
+}
+
+// Print styles
+@media print {
+  .responsive-app-wrapper {
+    zoom: 1 !important;
+    transform: none !important;
+  }
+}

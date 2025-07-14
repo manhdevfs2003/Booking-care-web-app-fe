@@ -21,15 +21,17 @@ class HomePage extends Component {
     };
 
     return (
-      <>
+      <div className="homepage-container">
         <HomeHeader isShowBanner={true} />
-        <Specialty id="section-specialty" settings={settings} />
-        <MedicalFacility id="section-facility" settings={settings} />
-        <OutStandingDoctor id="section-outstandingdoctor" settings={settings} />
-        <HandBook id="section-handbook" settings={settings} />
-        <About></About>
-        <HomeFooter></HomeFooter>
-      </>
+        <div className="homepage-content">
+          <Specialty id="section-specialty" settings={settings} />
+          <MedicalFacility id="section-facility" settings={settings} />
+          <OutStandingDoctor id="section-outstandingdoctor" settings={settings} />
+          <HandBook id="section-handbook" settings={settings} />
+          <About></About>
+          <HomeFooter></HomeFooter>
+        </div>
+      </div>
     );
   }
 }

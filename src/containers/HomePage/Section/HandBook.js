@@ -40,7 +40,9 @@ const HandBook = (props) => {
               dataHandbook.map((item, index) => (
                 <div key={index} className="section-customize handbook-child" onClick={() => handleViewDetailHandbook(item)}>
                   <div className="bg-image section-handbook" style={{ backgroundImage: `url(${item.image})` }} />
-                  <div className="handbook-name">{item.name}</div>
+                  <div className="text-content">
+                    <div className="handbook-name">{item.name}</div>
+                  </div>
                 </div>
               ))}
           </Slider>

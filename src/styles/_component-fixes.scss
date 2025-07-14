@@ -1,0 +1,386 @@
+/*
+ * RESPONSIVE FIXES FOR SPECIFIC COMPONENTS
+ * File: src/styles/_component-fixes.scss
+ */
+
+// Slick Carousel Responsive Fixes
+@media (max-width: 768px) {
+  .slick-slider {
+    .slick-list {
+      margin: 0 -5px;
+    }
+    
+    .slick-slide {
+      padding: 0 5px;
+    }
+  }
+  
+  // Reduce slides on mobile
+  .section-share {
+    .slick-track {
+      .slick-slide {
+        width: 50% !important; // Show 2 items instead of 4
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .slick-slider {
+    .slick-track {
+      .slick-slide {
+        width: 100% !important; // Show 1 item on mobile
+      }
+    }
+  }
+}
+
+// Table Responsive Fixes
+@media (max-width: 768px) {
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  table {
+    min-width: 600px;
+  }
+}
+
+// Modal Responsive Fixes
+@media (max-width: 768px) {
+  .modal-dialog {
+    max-width: 95% !important;
+    margin: 10px auto !important;
+  }
+  
+  .modal-content {
+    border-radius: 8px !important;
+  }
+  
+  .modal-header {
+    padding: 15px !important;
+    
+    .modal-title {
+      font-size: 18px !important;
+    }
+  }
+  
+  .modal-body {
+    padding: 15px !important;
+  }
+}
+
+// Form Responsive Fixes
+@media (max-width: 768px) {
+  .form-group {
+    margin-bottom: 15px !important;
+  }
+  
+  .form-control {
+    font-size: 16px !important; // Prevent zoom on iOS
+  }
+  
+  .btn {
+    padding: 12px 20px !important;
+    font-size: 16px !important;
+  }
+}
+
+// Navigation Responsive Fixes
+@media (max-width: 768px) {
+  .navbar-nav {
+    .nav-link {
+      padding: 8px 15px !important;
+      font-size: 16px !important;
+    }
+  }
+}
+
+// Doctor Profile Responsive Fixes
+@media (max-width: 768px) {
+  .profile-doctor-container {
+    .content-left {
+      .profile-doctor-avatar {
+        width: 60px !important;
+        height: 60px !important;
+      }
+    }
+    
+    .content-right {
+      .up {
+        margin-bottom: 8px !important;
+        
+        .name-doctor {
+          font-size: 16px !important;
+        }
+      }
+      
+      .down {
+        font-size: 14px !important;
+      }
+    }
+  }
+}
+
+// Booking Modal Responsive Fixes
+@media (max-width: 768px) {
+  .booking-modal-container {
+    .booking-modal-content {
+      .booking-modal-body {
+        .row {
+          .col-6 {
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Admin Dashboard Responsive Fixes
+@media (max-width: 768px) {
+  .manage-doctor-container {
+    .more-info {
+      .content-left {
+        width: 100% !important;
+        margin-bottom: 20px;
+      }
+      
+      .content-right {
+        width: 100% !important;
+      }
+    }
+  }
+  
+  .manage-schedule-container {
+    .m-s-title {
+      font-size: 18px !important;
+    }
+    
+    .pick-hour-container {
+      .pick-hour {
+        width: calc(50% - 5px) !important;
+        margin: 2.5px !important;
+        padding: 8px !important;
+        font-size: 14px !important;
+      }
+    }
+  }
+}
+
+// Patient List Responsive Fixes
+@media (max-width: 768px) {
+  .manage-patient-container {
+    .table {
+      font-size: 14px !important;
+      
+      th, td {
+        padding: 8px 4px !important;
+      }
+    }
+  }
+}
+
+// Toast Notification Responsive Fixes
+@media (max-width: 768px) {
+  .Toastify__toast-container {
+    width: 100vw !important;
+    padding: 4px !important;
+    left: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .Toastify__toast {
+    border-radius: 8px !important;
+    margin-bottom: 8px !important;
+  }
+}
+
+/* Text truncation with ellipsis - Cắt text và hiển thị dấu ... */
+.text-truncate {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Multi-line text truncation */
+.text-truncate-2-lines {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.text-truncate-3-lines {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Apply text truncation to specific sections */
+.section-share {
+  .section-customize {
+    .bg-image {
+      /* Đảm bảo container có kích thước cố định */
+      overflow: hidden;
+    }
+  }
+  
+  /* Truncate specialty names */
+  .specialty-name {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+  }
+  
+  /* Truncate doctor names */
+  .name-doctor {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+  }
+  
+  /* Truncate position titles */
+  .position {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Card titles truncation */
+.card-title,
+.section-title {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Responsive text truncation for different screen sizes */
+@media (max-width: 768px) {
+  /* Trên mobile, tất cả text dài sẽ bị cắt */
+  .section-share {
+    .section-customize {
+      h3, h4, h5 {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 100% !important;
+      }
+      
+      p {
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+    }
+  }
+  
+  /* Cắt text trong các section khác */
+  .home-header-banner {
+    .title1, .title2 {
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      padding: 0 20px !important;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  /* Mobile nhỏ - cắt ngắn hơn nữa */
+  .section-share {
+    .section-customize {
+      h3, h4, h5 {
+        font-size: 14px !important;
+      }
+      
+      p {
+        font-size: 12px !important;
+        -webkit-line-clamp: 1 !important;
+        line-clamp: 1 !important;
+      }
+    }
+  }
+}
+.homepage-container {
+  width: 100%;
+  min-height: 100vh;
+  
+  .homepage-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+
+/* Fix banner overlap */
+.home-header-banner {
+  margin-top: 0 !important;
+  position: relative;
+  top: 0;
+}
+
+/* ConfirmModal responsive fixes */
+.confirm-modal {
+  .modal-dialog {
+    margin: 20px auto !important;
+    max-width: 90% !important;
+    
+    @media (max-width: 768px) {
+      max-width: 95% !important;
+      margin: 10px auto !important;
+    }
+  }
+  
+  .modal-content {
+    border-radius: 8px;
+    
+    .modal-header {
+      padding: 15px 20px !important;
+      border-bottom: 1px solid #dee2e6;
+      
+      .modal-title {
+        font-size: 18px !important;
+        font-weight: 600;
+      }
+    }
+    
+    .modal-body {
+      padding: 20px !important;
+      
+      .confirm-modal-content {
+        .btn-container {
+          margin-top: 20px;
+          
+          .btn {
+            min-width: 80px;
+            margin: 0 5px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            
+            @media (max-width: 480px) {
+              width: 100%;
+              margin: 5px 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

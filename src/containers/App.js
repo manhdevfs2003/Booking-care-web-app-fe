@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <div className="main-container">
+        <div className="main-container responsive-app-wrapper">
           <div className="content-container">
             <CustomScrollbars style={{ height: "100vh", width: "100%" }}>
               <Routes>

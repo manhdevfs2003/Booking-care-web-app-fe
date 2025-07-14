@@ -50,8 +50,10 @@ const OutStandingDoctor = (props) => {
                       <div className="outer-bg">
                         <div className="bg-image section-outstanding-doctor" style={{ backgroundImage: `url(${imageBase64})` }} />
                       </div>
-                      <div className="position text-center">{language === LANGUAGES.VI ? nameVi : nameEn}</div>
-                      <div className="specialty-doctor">{item.Doctor_Infor?.specialtyData?.name || ""}</div>
+                      <div className="text-content">
+                        <div className="position text-center u-text-truncate">{language === LANGUAGES.VI ? nameVi : nameEn}</div>
+                        <div className="specialty-doctor u-text-truncate">{item.Doctor_Infor?.specialtyData?.name || ""}</div>
+                      </div>
                     </div>
                   </div>
                 );

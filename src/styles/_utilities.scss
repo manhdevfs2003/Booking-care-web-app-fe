@@ -1,0 +1,132 @@
+/*
+ * UTILITY CLASSES - Text Truncation và các tiện ích khác
+ * File: src/styles/_utilities.scss
+ */
+
+/* ===========================================
+   TEXT TRUNCATION UTILITIES
+   =========================================== */
+
+/* Single line truncation */
+.u-text-truncate {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+}
+
+/* Multi-line truncation */
+.u-text-truncate-2 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+}
+
+.u-text-truncate-3 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+}
+
+/* Responsive truncation */
+.u-text-truncate-sm {
+  @media (max-width: 768px) {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+  }
+}
+
+.u-text-truncate-xs {
+  @media (max-width: 480px) {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ===========================================
+   WIDTH UTILITIES
+   =========================================== */
+
+.u-max-width-100 {
+  max-width: 100% !important;
+}
+
+.u-max-width-200 {
+  max-width: 200px !important;
+}
+
+.u-max-width-300 {
+  max-width: 300px !important;
+}
+
+/* ===========================================
+   RESPONSIVE FONT SIZES
+   =========================================== */
+
+.u-font-responsive {
+  font-size: 16px;
+  
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
+}
+
+.u-title-responsive {
+  font-size: 24px;
+  
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
+}
+
+/* ===========================================
+   SPECIFIC COMPONENT FIXES
+   =========================================== */
+
+/* Apply text truncation to common elements */
+.specialty-name,
+.doctor-name,
+.clinic-name,
+.position-title {
+  @extend .u-text-truncate;
+}
+
+/* Card content truncation */
+.card-title {
+  @extend .u-text-truncate;
+}
+
+.card-text {
+  @extend .u-text-truncate-2;
+}
+
+/* Section content truncation */
+.section-title {
+  @extend .u-title-responsive;
+  @extend .u-text-truncate-sm;
+}
+
+.section-description {
+  @extend .u-font-responsive;
+  @extend .u-text-truncate-3;
+}
