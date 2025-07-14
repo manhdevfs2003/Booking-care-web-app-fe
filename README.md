@@ -2,7 +2,7 @@
 
 # 🏥 HealthCare Booking - Frontend
 
-[![Live Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://www.healthcarebooking.
+[![Live Demo](https://youtu.be/e0fqASWgtB4)](https://www.healthcarebooking.
 
 > **Ứng dụng đặt lịch khám bệnh trực tuyến** - Kết nối bệnh nhân với các bác sĩ chuyên khoa hàng đầu
 
