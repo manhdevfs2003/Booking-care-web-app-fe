@@ -143,44 +143,4 @@ REACT_APP_ROUTER_BASE_NAME=
 
 ## 🎥 Video Demo
 
-## 📂 Cấu trúc dự án
 
-\`\`\`
-reactjs/
-├── public/ # Static assets
-│ ├── index.html # HTML template
-│ ├── favicon.ico # Favicon
-│ └── manifest.json # PWA manifest
-├── src/
-│ ├── components/ # Reusable components
-│ │ ├── ConfirmModal/ # Modal components
-│ │ └── SideNavigation/ # Sidebar menu
-│ ├── containers/ # Page containers
-│ │ ├── App.js # Main app component
-│ │ ├── HomePage/ # Homepage sections
-│ │ ├── Header/ # Admin header
-│ │ └── System/ # Admin system
-│ ├── hoc/ # Higher-order components
-│ ├── routes/ # Route configurations
-│ ├── services/ # API services
-│ ├── store/ # Redux store
-│ │ ├── actions/ # Action creators
-│ │ ├── reducers/ # Reducers
-│ │ └── index.js # Store configuration
-│ ├── styles/ # Global styles
-│ │ ├── styles.scss # Main style file
-│ │ ├── \_responsive.scss # Responsive utilities
-│ │ ├── \_component-fixes.scss # Component fixes
-│ │ └── \_utilities.scss # Utility classes
-│ ├── translations/ # i18n translations
-│ │ ├── vi.json # Vietnamese
-│ │ └── en.json # English
-│ ├── utils/ # Utility functions
-│ ├── axios.js # API client config
-│ ├── config.js # App configuration
-│ └── index.js # App entry point
-├── .env.example # Environment template
-├── .gitignore # Git ignore rules
-├── package.json # Dependencies
-└── README.md # Documentation
-\`\`\`
